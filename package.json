@@ -17,6 +17,8 @@
   "license": "MIT",
   "dependencies": {
     "@blueprintjs/core": "^3.29.0",
+    "mobx": "^5.15.4",
+    "mobx-react": "^6.2.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "tslint": "^6.1.2"

@@ -2,12 +2,15 @@ import * as React from "react";
 
 import { Button, InputGroup, Tooltip } from "@blueprintjs/core";
 
+import { observer } from "mobx-react";
+
 import { LoginState } from "./LoginState";
 
 interface LoginProps {
   loginState: LoginState;
 }
 
+@observer
 export class Login extends React.Component<LoginProps> {
   render() {
     return (
@@ -34,7 +37,7 @@ export class Login extends React.Component<LoginProps> {
         <Button
           icon={ls.showPassword ? "unlock" : "lock"}
           minimal={true}
-          onClick={() => this.handleLockClick}
+          onClick={() => this.handleLockClick()}
         />
       </Tooltip>
     );

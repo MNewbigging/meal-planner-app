@@ -1,7 +1,10 @@
+import { observable } from "mobx";
+
 export class LoginState {
-  public showPassword: boolean = false;
+  @observable public showPassword: boolean = false;
 
   public setShowPassword() {
+    console.log("changing show pw");
     this.showPassword = !this.showPassword;
   }
 }
