@@ -6,6 +6,8 @@ import { observer } from "mobx-react";
 
 import { LoginState } from "./LoginState";
 
+import "./login.scss";
+
 interface LoginProps {
   loginState: LoginState;
 }
@@ -43,9 +45,9 @@ export class Login extends React.Component<LoginProps> {
     );
   }
 
-  private handleLockClick = () => {
+  private handleLockClick() {
     this.props.loginState.setShowPassword();
-  };
+  }
 
   private buttonPress(): void {
     console.log("herro!");
