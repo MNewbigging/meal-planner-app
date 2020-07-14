@@ -16,6 +16,7 @@
   "author": "Grant Bartlett",
   "license": "MIT",
   "dependencies": {
+    "@blueprintjs/core": "^3.29.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "tslint": "^6.1.2"
