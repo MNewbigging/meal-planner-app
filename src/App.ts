@@ -1,25 +1,6 @@
-import { Main } from './Main';
-import ReactDOM from 'react-dom';
-import React from 'react';
+import React from "react";
+import ReactDOM from "react-dom";
 
-export class App
-{
-    constructor()
-    {
-        this.render();
-    }
+import { Main } from "./Main";
 
-    public static addTwoNumbers(num1: number, num2: number): number
-    {
-        return num1 + num2;
-    }
-
-    private render(): void
-    {
-        ReactDOM.render(React.createElement(Main, { app: this }),
-            document.getElementById("app") || document.createElement("div")
-        );
-    }
-}
-
-new App();
+ReactDOM.render(React.createElement(Main), document.getElementById("app"));
