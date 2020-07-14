@@ -15,17 +15,26 @@ interface LoginProps {
 @observer
 export class Login extends React.Component<LoginProps> {
   render() {
+    const ls = this.props.loginState;
     return (
       <div className="login-container">
         <InputGroup
+          className={"text-input"}
           large={true}
-          placeholder={"enter your password..."}
+          placeholder={"username"}
+          type={"text"}
+        />
+        <InputGroup
+          className={"text-input"}
+          large={true}
+          placeholder={"password"}
           rightElement={this.renderLockButton()}
-          type={"password"}
+          type={ls.showPassword ? "text" : "password"}
         />
         <Button
+          large={true}
           text={"Click me"}
-          icon={"refresh"}
+          icon={"log-in"}
           onClick={() => this.buttonPress()}
         />
       </div>
