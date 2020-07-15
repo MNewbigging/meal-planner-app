@@ -4,6 +4,8 @@ import { Button, InputGroup, Tooltip } from "@blueprintjs/core";
 
 import { observer } from "mobx-react";
 
+import axios from "axios";
+
 import { LoginState } from "./LoginState";
 
 import "./login.scss";
@@ -59,6 +61,17 @@ export class Login extends React.Component<LoginProps> {
   }
 
   private buttonPress(): void {
-    console.log("herro!");
+    console.log("sending request...");
+    // Send a login request to server
+    const url = "http://localhost:3030/";
+    // The data to send
+    const data = {
+      username: "user",
+      password: "pw",
+    };
+    // Make the request
+    axios.post(url, data).then((res) => {
+      console.log(res);
+    });
   }
 }
