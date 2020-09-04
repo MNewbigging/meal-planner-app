@@ -17,7 +17,7 @@ export class AppState {
 
   constructor() {
     // Start by creating the login state and setting app enum to login
-    this.app = App.LOGIN;
+    this.app = App.HOME; // set to home until login completed
     this.loginState = new LoginState();
   }
 

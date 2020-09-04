@@ -2,9 +2,9 @@ import * as React from "react";
 
 import { observer } from "mobx-react";
 
-import { App, AppState } from "./AppState";
-import { Home } from "./home-page/Home";
-import { Login } from "./landing-page/Login";
+import { App, AppState } from "../AppState";
+import { Home } from "../home-page/Home";
+import { Login } from "../landing-page/Login";
 
 interface ApplicationProps {
   appState: AppState;

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { ApplicationBody } from "./ApplicationBody";
+import { ApplicationBody } from "./application/ApplicationBody";
 import { AppState } from "./AppState";
 
 /**
