@@ -1,8 +1,14 @@
 import React from "react";
 
+import { App } from "../AppState";
+
 import "./application-navbar.scss";
 
-export class ApplicationNavbar extends React.Component {
+interface NavbarProps {
+  toPage: (app: App) => void;
+}
+
+export class ApplicationNavbar extends React.Component<NavbarProps> {
   public render() {
     return (
       <div className={"navbar-container"}>

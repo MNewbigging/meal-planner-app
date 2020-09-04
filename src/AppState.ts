@@ -6,6 +6,7 @@ import { LoginState } from "./landing-page/LoginState";
 export enum App {
   LOGIN,
   HOME,
+  LIST,
 }
 
 /**
@@ -17,7 +18,7 @@ export class AppState {
 
   constructor() {
     // Start by creating the login state and setting app enum to login
-    this.app = App.LOGIN; // set to home until login completed
+    this.app = App.HOME; // set to home until login completed
     this.loginState = new LoginState();
   }
 
