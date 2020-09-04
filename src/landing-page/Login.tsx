@@ -37,10 +37,19 @@ export class Login extends React.Component<LoginProps> {
           large={true}
           text={"Click me"}
           icon={"log-in"}
-          onClick={() => this.buttonPress()}
+          onClick={() => this.handleLogin()}
+        />
+        <Button
+          large={true}
+          text={"Skip"}
+          icon={"log-in"}
+          onClick={() => this.handleSkipLogin()}
         />
       </div>
     );
+  }
+
+  private handleSkipLogin() {
   }
 
   private renderLockButton(): JSX.Element {
@@ -60,7 +69,7 @@ export class Login extends React.Component<LoginProps> {
     this.props.loginState.setShowPassword();
   }
 
-  private buttonPress(): void {
+  private handleLogin(): void {
     console.log("sending request...");
     // Send a login request to server
     const url = "http://localhost:3030/";
