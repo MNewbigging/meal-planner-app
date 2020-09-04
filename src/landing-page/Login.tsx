@@ -7,16 +7,18 @@ import { observer } from "mobx-react";
 import axios from "axios";
 
 import { LoginState } from "./LoginState";
+import { App } from "../AppState";
 
 import "./login.scss";
 
 interface LoginProps {
   loginState: LoginState;
+  toPage: (app: App) => void;
 }
 
 @observer
 export class Login extends React.Component<LoginProps> {
-  render() {
+  public render() {
     const ls = this.props.loginState;
     return (
       <div className="login-container">
@@ -50,6 +52,8 @@ export class Login extends React.Component<LoginProps> {
   }
 
   private handleSkipLogin() {
+    // Move from login to home page
+    this.props.toPage(App.HOME);
   }
 
   private renderLockButton(): JSX.Element {
