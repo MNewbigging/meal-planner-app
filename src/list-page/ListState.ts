@@ -36,6 +36,7 @@ export class ListState {
 
   @action
   public setItemChecked(id: number): void {
-    this.list.find((item) => item.id === id).checked = true;
+    const item = this.list.find((listItem) => listItem.id === id);
+    item.checked = !item.checked;
   }
 }
