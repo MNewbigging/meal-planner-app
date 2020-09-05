@@ -87,6 +87,9 @@ export class ListPage extends React.Component<ListPageProps> {
           item={item}
           checkItem={(id: number) => ls.setItemChecked(id)}
           deleteItem={(id: number) => ls.deleteFromList(id)}
+          updateItem={(id: number, newItem: IListItem) =>
+            ls.updateItem(id, newItem)
+          }
         />
       );
     });

@@ -3,8 +3,8 @@ import { action, observable } from "mobx";
 export interface IListItem {
   id: number;
   label: string;
-  checked: boolean;
   quantity: string;
+  checked: boolean;
 }
 
 export class ListState {
@@ -46,5 +46,10 @@ export class ListState {
   @action
   public setAddItemQuantity(quantity: string) {
     this.addItemQuantity = quantity;
+  }
+
+  @action
+  public updateItem(oldItemId: number, newItem: IListItem): void {
+    this.list[oldItemId] = newItem;
   }
 }
