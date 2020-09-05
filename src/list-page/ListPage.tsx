@@ -2,7 +2,7 @@ import React from "react";
 
 import { observer } from "mobx-react";
 
-import { Button, Card } from "@blueprintjs/core";
+import { Button, Card, InputGroup } from "@blueprintjs/core";
 
 import { ListItem } from "./ListItem";
 import { IListItem, ListState } from "./ListState";
@@ -27,30 +27,50 @@ export class ListPage extends React.Component<ListPageProps> {
   }
 
   private renderListControls(): JSX.Element {
+    const ls = this.props.listState;
     return (
       <div className={"list-controls"}>
-        <Button text={"Add item"} onClick={() => this.onAddListItem()} />
+        <InputGroup
+          value={ls.addItemInput}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            ls.setAddItemInput(event.target.value);
+          }}
+          rightElement={
+            <Button
+              minimal={true}
+              icon={"insert"}
+              disabled={!ls.addItemInputValid()}
+              onClick={() => this.onAddListItem()}
+            />
+          }
+        />
       </div>
     );
   }
 
   private onAddListItem() {
-    const itemId: number = this.props.listState.list.length;
+    const ls = this.props.listState;
+    const itemId: number = ls.list.length;
+    const itemLabel: string = ls.addItemInput;
+
     const listItem: IListItem = {
       id: itemId,
-      label: "new item",
+      label: itemLabel,
     };
-    this.props.listState.addToList(listItem);
+
+    ls.addToList(listItem);
+    ls.clearAddItemInput();
   }
 
   private renderList() {
+    const ls = this.props.listState;
     const listItems: JSX.Element[] = [];
-    this.props.listState.list.forEach((item) => {
+    ls.list.forEach((item) => {
       listItems.push(
         <ListItem
           key={"li-" + item.id}
           item={item}
-          deleteItem={(id: number) => this.props.listState.deleteFromList(id)}
+          deleteItem={(id: number) => ls.deleteFromList(id)}
         />
       );
     });

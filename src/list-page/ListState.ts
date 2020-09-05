@@ -6,15 +6,30 @@ export interface IListItem {
 }
 
 export class ListState {
-  @observable list: IListItem[] = [];
+  @observable public list: IListItem[] = [];
+  @observable public addItemInput: string = "";
 
   @action
-  public addToList(listItem: IListItem) {
+  public addToList(listItem: IListItem): void {
     this.list.push(listItem);
   }
 
   @action
-  public deleteFromList(id: number) {
+  public deleteFromList(id: number): void {
     this.list = this.list.filter((item) => item.id !== id);
+  }
+
+  @action
+  public setAddItemInput(val: string): void {
+    this.addItemInput = val;
+  }
+
+  @action
+  public clearAddItemInput(): void {
+    this.addItemInput = "";
+  }
+
+  public addItemInputValid(): boolean {
+    return this.addItemInput !== "";
   }
 }
