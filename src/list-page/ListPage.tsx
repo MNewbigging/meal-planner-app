@@ -46,7 +46,13 @@ export class ListPage extends React.Component<ListPageProps> {
   private renderList() {
     const listItems: JSX.Element[] = [];
     this.props.listState.list.forEach((item) => {
-      listItems.push(<ListItem key={"li-" + item.id} item={item} />);
+      listItems.push(
+        <ListItem
+          key={"li-" + item.id}
+          item={item}
+          deleteItem={(id: number) => this.props.listState.deleteFromList(id)}
+        />
+      );
     });
 
     return <div className={"list"}>{listItems}</div>;

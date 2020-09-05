@@ -12,4 +12,9 @@ export class ListState {
   public addToList(listItem: IListItem) {
     this.list.push(listItem);
   }
+
+  @action
+  public deleteFromList(id: number) {
+    this.list = this.list.filter((item) => item.id !== id);
+  }
 }

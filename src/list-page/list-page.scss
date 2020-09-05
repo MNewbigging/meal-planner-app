@@ -11,5 +11,18 @@
   .list {
     display: flex;
     flex-direction: column;
+
+    .list-item {
+      display: flex;
+      flex-direction: row;
+
+      label {
+        margin: 5px 5px 5px 0px;
+      }
+
+      button {
+        margin: 0;
+      }
+    }
   }
 }
