@@ -3,7 +3,7 @@ import * as React from "react";
 import { observer } from "mobx-react";
 
 import { App, AppState } from "../AppState";
-import { Home } from "../home-page/Home";
+import { HomePage } from "../home-page/HomePage";
 import { Login } from "../landing-page/Login";
 import { ListPage } from "../list-page/ListPage";
 import { ApplicationNavbar } from "./ApplicationNavbar";
@@ -38,7 +38,7 @@ export class ApplicationBody extends React.Component<ApplicationProps> {
     // Then add whatever page necessary based on app state
     switch (this.props.appState.app) {
       case App.HOME:
-        toRender.push(<Home key={"home-page"} />);
+        toRender.push(<HomePage key={"home-page"} />);
         break;
       case App.MEALS:
         toRender.push(<MealsPage key={"meals-page"} />);

@@ -1,7 +1,6 @@
 import React from "react";
 
-// TODO - rename to HomePage
-export class Home extends React.Component {
+export class HomePage extends React.Component {
   public render() {
     return (
       <div>

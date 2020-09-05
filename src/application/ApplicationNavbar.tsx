@@ -18,19 +18,16 @@ export class ApplicationNavbar extends React.Component<NavbarProps> {
           LOGO
         </div>
         <Button
-          key={"home"}
           className={"navbar-link"}
           text={"HOME"}
           onClick={() => this.props.toPage(App.HOME)}
         />
         <Button
-          key={"meals"}
           className={"navbar-link"}
           text={"MEALS"}
           onClick={() => this.props.toPage(App.MEALS)}
         />
         <Button
-          key={"list"}
           className={"navbar-link"}
           text={"LIST"}
           onClick={() => this.props.toPage(App.LIST)}

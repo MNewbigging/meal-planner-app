@@ -11,7 +11,7 @@ interface ListItemProps {
 export class ListItem extends React.Component<ListItemProps> {
   public render() {
     return (
-      <div key={"li-" + this.props.item.id} className={"list-item"}>
+      <div className={"list-item"}>
         <Checkbox label={this.props.item.label} />
       </div>
     );
