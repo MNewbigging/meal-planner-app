@@ -42,7 +42,7 @@ export class ApplicationBody extends React.Component<ApplicationProps> {
         toRender.push(<MealsPage />);
         break;
       case App.LIST:
-        toRender.push(<ListPage />);
+        toRender.push(<ListPage listState={this.props.appState.listState} />);
         break;
     }
 

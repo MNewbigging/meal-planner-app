@@ -4,6 +4,8 @@ import ReactDOM from "react-dom";
 import { ApplicationBody } from "./application/ApplicationBody";
 import { AppState } from "./AppState";
 
+import "./app.scss";
+
 /**
  * App.ts is the main entry point for the application.
  */

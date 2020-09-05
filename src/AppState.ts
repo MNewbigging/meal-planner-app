@@ -1,6 +1,7 @@
 import { action, observable } from "mobx";
 
 import { LoginState } from "./landing-page/LoginState";
+import { ListState } from "./list-page/ListState";
 
 // This allows app to control which top-level component is shown
 export enum App {
@@ -16,11 +17,12 @@ export enum App {
 export class AppState {
   @observable public app: App;
   public loginState: LoginState;
+  public listState: ListState;
 
   constructor() {
-    // Start by creating the login state and setting app enum to login
-    this.app = App.HOME; // set to home until login completed
+    this.app = App.LIST;
     this.loginState = new LoginState();
+    this.listState = new ListState();
   }
 
   @action
