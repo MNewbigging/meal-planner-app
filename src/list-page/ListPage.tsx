@@ -31,16 +31,28 @@ export class ListPage extends React.Component<ListPageProps> {
     return (
       <div className={"list-controls"}>
         <InputGroup
-          value={ls.addItemInput}
+          placeholder={"Add item..."}
+          value={ls.addItemLabel}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             ls.setAddItemInput(event.target.value);
           }}
           rightElement={
-            <Button
-              minimal={true}
-              icon={"insert"}
-              disabled={!ls.addItemInputValid()}
-              onClick={() => this.onAddListItem()}
+            <InputGroup
+              className={"quantity-input"}
+              type={"number"}
+              step={1}
+              value={ls.addItemQuantity}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                ls.setAddItemQuantity(event.target.value);
+              }}
+              rightElement={
+                <Button
+                  minimal={true}
+                  icon={"insert"}
+                  disabled={!ls.addItemInputValid()}
+                  onClick={() => this.onAddListItem()}
+                />
+              }
             />
           }
         />
@@ -51,16 +63,18 @@ export class ListPage extends React.Component<ListPageProps> {
   private onAddListItem() {
     const ls = this.props.listState;
     const itemId: number = ls.list.length;
-    const itemLabel: string = ls.addItemInput;
+    const itemLabel: string = ls.addItemLabel;
+    const itemQuantity: string = ls.addItemQuantity;
 
     const listItem: IListItem = {
       id: itemId,
       label: itemLabel,
       checked: false,
+      quantity: itemQuantity,
     };
 
     ls.addToList(listItem);
-    ls.clearAddItemInput();
+    ls.clearAddItemFields();
   }
 
   private renderList() {

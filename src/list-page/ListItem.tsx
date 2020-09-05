@@ -16,11 +16,15 @@ interface ListItemProps {
 export class ListItem extends React.Component<ListItemProps> {
   public render() {
     const item = this.props.item;
+    const label =
+      item.quantity !== "1"
+        ? item.label + " (" + item.quantity + ")"
+        : item.label;
     return (
       <div className={"list-item"}>
         <Checkbox
           large={true}
-          label={item.label}
+          label={label}
           checked={item.checked}
           onChange={() => this.props.checkItem(item.id)}
         />
