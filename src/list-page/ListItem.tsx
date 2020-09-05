@@ -1,6 +1,7 @@
 import React from "react";
 
 import { observer } from "mobx-react";
+import { action, observable } from "mobx";
 
 import { Button, Checkbox } from "@blueprintjs/core";
 
@@ -14,6 +15,8 @@ interface ListItemProps {
 
 @observer
 export class ListItem extends React.Component<ListItemProps> {
+  @observable private hover: boolean = false;
+
   public render() {
     const item = this.props.item;
     const label =
@@ -21,13 +24,31 @@ export class ListItem extends React.Component<ListItemProps> {
         ? item.label + " (" + item.quantity + ")"
         : item.label;
     return (
-      <div className={"list-item"}>
+      <div
+        className={"list-item"}
+        onMouseEnter={() => this.onMouseEnterExit(true)}
+        onMouseLeave={() => this.onMouseEnterExit(false)}
+      >
         <Checkbox
           large={true}
           label={label}
           checked={item.checked}
           onChange={() => this.props.checkItem(item.id)}
         />
+        {this.hover && this.renderItemActionButtons(item)}
+      </div>
+    );
+  }
+
+  @action
+  private onMouseEnterExit(val: boolean): void {
+    this.hover = val;
+  }
+
+  private renderItemActionButtons(item: IListItem): JSX.Element {
+    return (
+      <div>
+        <Button minimal={true} icon={"edit"} />
         <Button
           minimal={true}
           icon={"trash"}
