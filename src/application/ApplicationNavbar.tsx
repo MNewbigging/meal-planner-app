@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Button } from "@blueprintjs/core";
+
 import { App } from "../AppState";
 
 import "./application-navbar.scss";
@@ -13,9 +15,9 @@ export class ApplicationNavbar extends React.Component<NavbarProps> {
     return (
       <div className={"navbar-container"}>
         <div className={"navbar-logo"}>LOGO</div>
-        <div className={"navbar-link"}>HOME</div>
-        <div className={"navbar-link"}>MEALS</div>
-        <div className={"navbar-link"}>LIST</div>
+        <Button className={"navbar-link"} text={"HOME"} />
+        <Button className={"navbar-link"} text={"MEALS"} />
+        <Button className={"navbar-link"} text={"LIST"} />
       </div>
     );
   }
