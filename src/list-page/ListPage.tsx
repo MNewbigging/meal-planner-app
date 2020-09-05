@@ -2,10 +2,10 @@ import React from "react";
 
 import { observer } from "mobx-react";
 
-import { Button } from "@blueprintjs/core";
+import { Button, Card } from "@blueprintjs/core";
 
-import { ListState, IListItem } from "./ListState";
 import { ListItem } from "./ListItem";
+import { IListItem, ListState } from "./ListState";
 
 import "./list-page.scss";
 
@@ -18,10 +18,10 @@ export class ListPage extends React.Component<ListPageProps> {
   public render() {
     return (
       <div className={"page-container"}>
-        <div className={"list-container"}>
+        <Card className={"list-container"} elevation={2}>
           {this.renderListControls()}
           {this.renderList()}
-        </div>
+        </Card>
       </div>
     );
   }
