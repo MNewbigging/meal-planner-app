@@ -56,6 +56,7 @@ export class ListPage extends React.Component<ListPageProps> {
     const listItem: IListItem = {
       id: itemId,
       label: itemLabel,
+      checked: false,
     };
 
     ls.addToList(listItem);
@@ -70,6 +71,7 @@ export class ListPage extends React.Component<ListPageProps> {
         <ListItem
           key={"li-" + item.id}
           item={item}
+          checkItem={(id: number) => ls.setItemChecked(id)}
           deleteItem={(id: number) => ls.deleteFromList(id)}
         />
       );

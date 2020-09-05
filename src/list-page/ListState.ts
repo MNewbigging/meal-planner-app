@@ -3,6 +3,7 @@ import { action, observable } from "mobx";
 export interface IListItem {
   id: number;
   label: string;
+  checked: boolean;
 }
 
 export class ListState {
@@ -31,5 +32,10 @@ export class ListState {
 
   public addItemInputValid(): boolean {
     return this.addItemInput !== "";
+  }
+
+  @action
+  public setItemChecked(id: number): void {
+    this.list.find((item) => item.id === id).checked = true;
   }
 }
