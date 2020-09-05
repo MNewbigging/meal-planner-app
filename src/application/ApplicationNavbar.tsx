@@ -15,9 +15,21 @@ export class ApplicationNavbar extends React.Component<NavbarProps> {
     return (
       <div className={"navbar-container"}>
         <div className={"navbar-logo"}>LOGO</div>
-        <Button className={"navbar-link"} text={"HOME"} />
-        <Button className={"navbar-link"} text={"MEALS"} />
-        <Button className={"navbar-link"} text={"LIST"} />
+        <Button
+          className={"navbar-link"}
+          text={"HOME"}
+          onClick={() => this.props.toPage(App.HOME)}
+        />
+        <Button
+          className={"navbar-link"}
+          text={"MEALS"}
+          onClick={() => this.props.toPage(App.MEALS)}
+        />
+        <Button
+          className={"navbar-link"}
+          text={"LIST"}
+          onClick={() => this.props.toPage(App.LIST)}
+        />
       </div>
     );
   }

@@ -7,6 +7,7 @@ import { Home } from "../home-page/Home";
 import { Login } from "../landing-page/Login";
 import { ListPage } from "../list-page/ListPage";
 import { ApplicationNavbar } from "./ApplicationNavbar";
+import { MealsPage } from "../meals-page/MealsPage";
 
 interface ApplicationProps {
   appState: AppState;
@@ -36,6 +37,9 @@ export class ApplicationBody extends React.Component<ApplicationProps> {
     switch (this.props.appState.app) {
       case App.HOME:
         toRender.push(<Home />);
+        break;
+      case App.MEALS:
+        toRender.push(<MealsPage />);
         break;
       case App.LIST:
         toRender.push(<ListPage />);

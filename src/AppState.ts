@@ -6,6 +6,7 @@ import { LoginState } from "./landing-page/LoginState";
 export enum App {
   LOGIN,
   HOME,
+  MEALS,
   LIST,
 }
 
