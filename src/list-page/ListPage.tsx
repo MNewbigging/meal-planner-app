@@ -4,7 +4,8 @@ import { observer } from "mobx-react";
 
 import { Button } from "@blueprintjs/core";
 
-import { ListState } from "./ListState";
+import { ListState, IListItem } from "./ListState";
+import { ListItem } from "./ListItem";
 
 import "./list-page.scss";
 
@@ -29,20 +30,23 @@ export class ListPage extends React.Component<ListPageProps> {
     return (
       <div className={"list-controls"}>
         <Button text={"Add item"} onClick={() => this.onAddListItem()} />
-        <Button text={"dummy"} />
       </div>
     );
   }
 
   private onAddListItem() {
-    this.props.listState.addToList("new item");
+    const itemId: number = this.props.listState.list.length;
+    const listItem: IListItem = {
+      id: itemId,
+      label: "new item",
+    };
+    this.props.listState.addToList(listItem);
   }
 
   private renderList() {
-    // Grab all the list items
     const listItems: JSX.Element[] = [];
     this.props.listState.list.forEach((item) => {
-      listItems.push(<div>{item}</div>);
+      listItems.push(<ListItem item={item} />);
     });
 
     return <div className={"list"}>{listItems}</div>;

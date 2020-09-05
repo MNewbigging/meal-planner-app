@@ -31,18 +31,25 @@ export class ApplicationBody extends React.Component<ApplicationProps> {
     // Put everything to render in array
     const toRender: JSX.Element[] = [];
     // Add the app navbar to render array
-    toRender.push(<ApplicationNavbar toPage={this.props.appState.toPage} />);
+    toRender.push(
+      <ApplicationNavbar key={"navbar"} toPage={this.props.appState.toPage} />
+    );
 
     // Then add whatever page necessary based on app state
     switch (this.props.appState.app) {
       case App.HOME:
-        toRender.push(<Home />);
+        toRender.push(<Home key={"home-page"} />);
         break;
       case App.MEALS:
-        toRender.push(<MealsPage />);
+        toRender.push(<MealsPage key={"meals-page"} />);
         break;
       case App.LIST:
-        toRender.push(<ListPage listState={this.props.appState.listState} />);
+        toRender.push(
+          <ListPage
+            key={"list-page"}
+            listState={this.props.appState.listState}
+          />
+        );
         break;
     }
 
