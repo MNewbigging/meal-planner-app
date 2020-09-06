@@ -30,6 +30,12 @@
           border: 1px solid #17e8ff;
         }
       }
+
+      @media screen and (max-width: 600px) {
+        .meal-item {
+          flex: 0 0 99%;
+        }
+      }
     }
   }
 
