@@ -5,6 +5,7 @@ import { MealViewerState } from "./MealViewerState";
 export interface Meal {
   id: number;
   title: string;
+  method: string;
 }
 
 export class MealState {

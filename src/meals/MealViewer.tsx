@@ -2,9 +2,11 @@ import React from "react";
 
 import { observer } from "mobx-react";
 
-import { Button, InputGroup } from "@blueprintjs/core";
+import { Button, InputGroup, TextArea } from "@blueprintjs/core";
 
 import { MealState } from "./MealState";
+
+import "./meal-viewer.scss";
 
 interface MVProps {
   mealState: MealState;
@@ -71,9 +73,12 @@ export class MealViewer extends React.Component<MVProps> {
 
   private renderMealDetails(): JSX.Element {
     const ms = this.props.mealState;
+    const meal = ms.meals[ms.selectedMeal];
     return (
       <div className={"meal-details-container"}>
-        <h1>{ms.meals[ms.selectedMeal].title}</h1>
+        <h1 className={"title-field"}>{meal.title}</h1>
+        <h3>Method:</h3>
+        <p className={"method-field"}>{meal.method}</p>
       </div>
     );
   }
@@ -81,12 +86,22 @@ export class MealViewer extends React.Component<MVProps> {
   private renderMealEditor(): JSX.Element {
     const editMeal = this.props.mealState.viewerState.mealCopy;
     return (
-      <div>
+      <div className={"meal-editor-container"}>
         <InputGroup
+          className={"title-field edit"}
           value={editMeal.title}
           large={true}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             editMeal.title = event.target.value;
+          }}
+        />
+        <h3>Method:</h3>
+        <TextArea
+          className={"method-field edit"}
+          fill={true}
+          value={editMeal.method}
+          onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
+            editMeal.method = event.target.value;
           }}
         />
       </div>

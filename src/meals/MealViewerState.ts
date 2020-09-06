@@ -13,6 +13,7 @@ export class MealViewerState {
     const newMeal: Meal = {
       id: meal.id,
       title: meal.title,
+      method: meal.method,
     };
     this.mealCopy = newMeal;
   }
