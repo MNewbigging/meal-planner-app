@@ -14,6 +14,7 @@ export class MealViewerState {
       id: meal.id,
       title: meal.title,
       method: meal.method,
+      servings: meal.servings,
     };
     this.mealCopy = newMeal;
   }

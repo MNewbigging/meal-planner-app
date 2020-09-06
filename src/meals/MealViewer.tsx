@@ -77,6 +77,10 @@ export class MealViewer extends React.Component<MVProps> {
     return (
       <div className={"meal-details-container"}>
         <h1 className={"title-field"}>{meal.title}</h1>
+        <p className={"servings-field"}>
+          <span>Servings: </span>
+          {meal.servings}
+        </p>
         <h3>Method:</h3>
         <p className={"method-field"}>{meal.method}</p>
       </div>
@@ -93,6 +97,16 @@ export class MealViewer extends React.Component<MVProps> {
           large={true}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             editMeal.title = event.target.value;
+          }}
+        />
+        <span>Servings:</span>
+        <InputGroup
+          className={"servings-field edit"}
+          value={editMeal.servings}
+          type={"number"}
+          step={1}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            editMeal.servings = event.target.value;
           }}
         />
         <h3>Method:</h3>
