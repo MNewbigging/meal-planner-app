@@ -25,6 +25,7 @@ export class MealsPage extends React.Component<MealsPageProps> {
           className={"meals-page-panes"}
           split={"vertical"}
           defaultSize={"70vw"}
+          minSize={180}
         >
           <Pane className={"meals-pane"}>
             {this.renderMealControls()}
@@ -41,8 +42,12 @@ export class MealsPage extends React.Component<MealsPageProps> {
       <Card className={"meals-control-container"}>
         <div className={"meals-control"}>
           <InputGroup
+            value={this.props.mealState.addMealTitle}
             type={"text"}
             placeholder={"Add meal title..."}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              this.props.mealState.setMealTitle(event.target.value);
+            }}
             rightElement={
               <Button
                 minimal={true}
@@ -59,11 +64,13 @@ export class MealsPage extends React.Component<MealsPageProps> {
   private onAddMeal(): void {
     const ms = this.props.mealState;
     const mealId: number = ms.meals.length;
+    const mealTitle: string = ms.addMealTitle;
     const newMeal: Meal = {
       id: mealId,
-      title: "new meal",
+      title: mealTitle,
     };
     ms.addMeal(newMeal);
+    ms.clearMealTitle();
   }
 
   private renderMeals(): JSX.Element {

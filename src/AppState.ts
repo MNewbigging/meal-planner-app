@@ -1,8 +1,8 @@
 import { action, observable } from "mobx";
 
-import { LoginState } from "./landing-page/LoginState";
-import { ListState } from "./list-page/ListState";
-import { MealState } from "./meals-page/MealState";
+import { LoginState } from "./login/LoginState";
+import { ListState } from "./list/ListState";
+import { MealState } from "./meals/MealState";
 
 // This allows app to control which top-level component is shown
 export enum App {

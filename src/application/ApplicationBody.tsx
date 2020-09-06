@@ -3,10 +3,10 @@ import * as React from "react";
 import { observer } from "mobx-react";
 
 import { App, AppState } from "../AppState";
-import { HomePage } from "../home-page/HomePage";
-import { Login } from "../landing-page/Login";
-import { ListPage } from "../list-page/ListPage";
-import { MealsPage } from "../meals-page/MealsPage";
+import { HomePage } from "../home/HomePage";
+import { Login } from "../login/Login";
+import { ListPage } from "../list/ListPage";
+import { MealsPage } from "../meals/MealsPage";
 import { ApplicationNavbar } from "./ApplicationNavbar";
 
 interface ApplicationProps {
