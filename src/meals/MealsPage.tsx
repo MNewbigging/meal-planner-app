@@ -8,6 +8,7 @@ import SplitPane, { Pane } from "react-split-pane";
 
 import { MealItem } from "./MealItem";
 import { Meal, MealState } from "./MealState";
+import { MealViewer } from "./MealViewer";
 
 import "../misc-styles/pane-resizer.scss";
 import "./meals-page.scss";
@@ -31,27 +32,31 @@ export class MealsPage extends React.Component<MealsPageProps> {
             {this.renderMealControls()}
             {this.renderMeals()}
           </Pane>
-          <Pane className={"details-pane"}>RIGHT</Pane>
+          <Pane className={"details-pane"}>
+            <MealViewer mealState={this.props.mealState} />
+          </Pane>
         </SplitPane>
       </div>
     );
   }
 
   private renderMealControls(): JSX.Element {
+    const ms = this.props.mealState;
     return (
       <Card className={"meals-control-container"}>
         <div className={"meals-control"}>
           <InputGroup
-            value={this.props.mealState.addMealTitle}
+            value={ms.addMealTitle}
             type={"text"}
             placeholder={"Add meal title..."}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              this.props.mealState.setMealTitle(event.target.value);
+              ms.setMealTitle(event.target.value);
             }}
             rightElement={
               <Button
                 minimal={true}
                 icon={"insert"}
+                disabled={!ms.addMealTitleValid()}
                 onClick={() => this.onAddMeal()}
               />
             }
@@ -70,13 +75,22 @@ export class MealsPage extends React.Component<MealsPageProps> {
       title: mealTitle,
     };
     ms.addMeal(newMeal);
+    ms.selectMeal(ms.meals[ms.meals.length - 1]);
     ms.clearMealTitle();
   }
 
   private renderMeals(): JSX.Element {
+    const ms = this.props.mealState;
     const meals: JSX.Element[] = [];
-    this.props.mealState.meals.forEach((meal) => {
-      meals.push(<MealItem key={"mi-" + meal.id} meal={meal} />);
+    ms.meals.forEach((meal) => {
+      meals.push(
+        <MealItem
+          key={"mi-" + meal.id}
+          meal={meal}
+          selectedMeal={ms.selectedMeal}
+          onClick={() => ms.selectMeal(meal)}
+        />
+      );
     });
 
     return <div className={"meals-list-container"}>{meals}</div>;

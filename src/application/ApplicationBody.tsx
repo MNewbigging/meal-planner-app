@@ -4,8 +4,8 @@ import { observer } from "mobx-react";
 
 import { App, AppState } from "../AppState";
 import { HomePage } from "../home/HomePage";
-import { Login } from "../login/Login";
 import { ListPage } from "../list/ListPage";
+import { Login } from "../login/Login";
 import { MealsPage } from "../meals/MealsPage";
 import { ApplicationNavbar } from "./ApplicationNavbar";
 
