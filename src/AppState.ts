@@ -2,6 +2,7 @@ import { action, observable } from "mobx";
 
 import { LoginState } from "./landing-page/LoginState";
 import { ListState } from "./list-page/ListState";
+import { MealState } from "./meals-page/MealState";
 
 // This allows app to control which top-level component is shown
 export enum App {
@@ -18,11 +19,13 @@ export class AppState {
   @observable public app: App;
   public loginState: LoginState;
   public listState: ListState;
+  public mealState: MealState;
 
   constructor() {
     this.app = App.MEALS;
     this.loginState = new LoginState();
     this.listState = new ListState();
+    this.mealState = new MealState();
   }
 
   @action

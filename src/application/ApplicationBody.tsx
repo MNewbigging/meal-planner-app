@@ -6,8 +6,8 @@ import { App, AppState } from "../AppState";
 import { HomePage } from "../home-page/HomePage";
 import { Login } from "../landing-page/Login";
 import { ListPage } from "../list-page/ListPage";
-import { ApplicationNavbar } from "./ApplicationNavbar";
 import { MealsPage } from "../meals-page/MealsPage";
+import { ApplicationNavbar } from "./ApplicationNavbar";
 
 interface ApplicationProps {
   appState: AppState;
@@ -16,7 +16,8 @@ interface ApplicationProps {
 @observer
 export class ApplicationBody extends React.Component<ApplicationProps> {
   public render() {
-    const app = this.props.appState.app;
+    const appState = this.props.appState;
+    const app = appState.app;
 
     // Login is the only page without navbar
     if (app === App.LOGIN) {
@@ -32,23 +33,22 @@ export class ApplicationBody extends React.Component<ApplicationProps> {
     const toRender: JSX.Element[] = [];
     // Add the app navbar to render array
     toRender.push(
-      <ApplicationNavbar key={"navbar"} toPage={this.props.appState.toPage} />
+      <ApplicationNavbar key={"navbar"} toPage={appState.toPage} />
     );
 
     // Then add whatever page necessary based on app state
-    switch (this.props.appState.app) {
+    switch (appState.app) {
       case App.HOME:
         toRender.push(<HomePage key={"home-page"} />);
         break;
       case App.MEALS:
-        toRender.push(<MealsPage key={"meals-page"} />);
+        toRender.push(
+          <MealsPage key={"meals-page"} mealState={appState.mealState} />
+        );
         break;
       case App.LIST:
         toRender.push(
-          <ListPage
-            key={"list-page"}
-            listState={this.props.appState.listState}
-          />
+          <ListPage key={"list-page"} listState={appState.listState} />
         );
         break;
     }
