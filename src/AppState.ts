@@ -20,7 +20,7 @@ export class AppState {
   public listState: ListState;
 
   constructor() {
-    this.app = App.LIST;
+    this.app = App.MEALS;
     this.loginState = new LoginState();
     this.listState = new ListState();
   }

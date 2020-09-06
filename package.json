@@ -4,7 +4,7 @@
   "description": "A very simple starter project for using React,TypeScript and Webpack.",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development --open",
+    "dev": "webpack-dev-server --mode development --open --host 0.0.0.0",
     "build": "webpack --mode production",
     "test": "jest"
   },
@@ -22,6 +22,7 @@
     "mobx-react": "^6.2.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-split-pane": "^0.1.92",
     "tslint": "^6.1.2"
   },
   "devDependencies": {

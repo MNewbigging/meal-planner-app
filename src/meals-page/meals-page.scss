@@ -1,0 +1,23 @@
+.meals-page-panes {
+  position: static !important; // need to override standard pane styling with this
+
+  // Left-hand pane
+  .meals-pane {
+    .meals-control-container {
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 20px;
+
+      .meals-control {
+        width: 30%;
+      }
+    }
+  }
+
+  // right-hand pane
+  .details-pane {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+}

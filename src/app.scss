@@ -4,8 +4,5 @@
 }
 
 .page-container {
-  margin-top: 20px;
-  height: calc(
-    100% - 100px
-  ); // this value is navbar height plus this item's margin-top
+  height: calc(100% - 80px); // - value is navbar height
 }
