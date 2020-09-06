@@ -1,5 +1,7 @@
 import { action, observable } from "mobx";
 
+import { MealViewerState } from "./MealViewerState";
+
 export interface Meal {
   id: number;
   title: string;
@@ -8,7 +10,8 @@ export interface Meal {
 export class MealState {
   @observable public meals: Meal[] = [];
   @observable public addMealTitle: string = "";
-  @observable public selectedMeal: Meal | undefined;
+  @observable public selectedMeal: number | undefined;
+  public viewerState: MealViewerState = new MealViewerState();
 
   @action
   public addMeal(meal: Meal): void {
@@ -30,7 +33,7 @@ export class MealState {
   }
 
   @action
-  public selectMeal(meal: Meal): void {
-    this.selectedMeal = meal;
+  public selectMeal(id: number): void {
+    this.selectedMeal = id;
   }
 }

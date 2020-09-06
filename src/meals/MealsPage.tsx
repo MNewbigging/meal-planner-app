@@ -25,7 +25,7 @@ export class MealsPage extends React.Component<MealsPageProps> {
         <SplitPane
           className={"meals-page-panes"}
           split={"vertical"}
-          defaultSize={"70vw"}
+          defaultSize={"60vw"}
           minSize={180}
         >
           <Pane className={"meals-pane"}>
@@ -43,7 +43,7 @@ export class MealsPage extends React.Component<MealsPageProps> {
   private renderMealControls(): JSX.Element {
     const ms = this.props.mealState;
     return (
-      <Card className={"meals-control-container"}>
+      <Card className={"meals-control-container"} elevation={2}>
         <div className={"meals-control"}>
           <InputGroup
             value={ms.addMealTitle}
@@ -75,7 +75,7 @@ export class MealsPage extends React.Component<MealsPageProps> {
       title: mealTitle,
     };
     ms.addMeal(newMeal);
-    ms.selectMeal(ms.meals[ms.meals.length - 1]);
+    ms.selectMeal(mealId);
     ms.clearMealTitle();
   }
 
@@ -87,8 +87,8 @@ export class MealsPage extends React.Component<MealsPageProps> {
         <MealItem
           key={"mi-" + meal.id}
           meal={meal}
-          selectedMeal={ms.selectedMeal}
-          onClick={() => ms.selectMeal(meal)}
+          selectedMeal={ms.meals[ms.selectedMeal]}
+          onClick={() => ms.selectMeal(meal.id)}
         />
       );
     });
