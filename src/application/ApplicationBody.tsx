@@ -53,7 +53,12 @@ export class ApplicationBody extends React.Component<ApplicationProps> {
         );
         break;
       case App.SETTINGS:
-        toRender.push(<SettingsPage />);
+        toRender.push(
+          <SettingsPage
+            key={"settings-page"}
+            settingsState={appState.settingsState}
+          />
+        );
         break;
     }
 
