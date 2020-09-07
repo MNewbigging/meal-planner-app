@@ -1,0 +1,22 @@
+.tag-details-container {
+  width: 100%;
+  height: 100%;
+
+  .tags-description {
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-bottom: 10px;
+  }
+
+  .tags-box {
+    margin-left: 40px;
+    padding: 10px;
+    width: 60%;
+    box-sizing: border-box;
+    border: 1px solid grey;
+
+    .tag {
+      margin: 2px;
+    }
+  }
+}

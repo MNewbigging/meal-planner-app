@@ -3,7 +3,7 @@ import React from "react";
 import { observer } from "mobx-react";
 
 import { Settings, SettingsState } from "./SettingsState";
-import { TagDetails } from "./TagDetails";
+import { TagDetails } from "./tags/TagDetails";
 
 import "./settings-page.scss";
 
