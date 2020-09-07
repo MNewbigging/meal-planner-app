@@ -75,6 +75,7 @@ export class MealsPage extends React.Component<MealsPageProps> {
       title: mealTitle,
       method: "",
       servings: "2",
+      tags: [],
     };
     ms.addMeal(newMeal);
     ms.selectMeal(mealId);

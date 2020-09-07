@@ -2,7 +2,7 @@ import React from "react";
 
 import { observer } from "mobx-react";
 
-import { Button, InputGroup, TextArea } from "@blueprintjs/core";
+import { Button, InputGroup, Tag, TextArea } from "@blueprintjs/core";
 
 import { MealState } from "./MealState";
 
@@ -91,6 +91,7 @@ export class MealViewer extends React.Component<MVProps> {
     const editMeal = this.props.mealState.viewerState.mealCopy;
     return (
       <div className={"meal-editor-container"}>
+        <span>Title:</span>
         <InputGroup
           className={"title-field edit"}
           value={editMeal.title}

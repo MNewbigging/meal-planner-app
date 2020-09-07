@@ -7,6 +7,7 @@ export interface Meal {
   title: string;
   method: string;
   servings: string;
+  tags: string[];
 }
 
 export class MealState {
