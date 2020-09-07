@@ -1,10 +1,12 @@
 import { action, observable } from "mobx";
 
+import { ITag } from "../fixed/SystemTags";
 import { Meal } from "./MealState";
 
 export class MealViewerState {
   @observable public editing: boolean = false;
   @observable public mealCopy: Meal | undefined;
+  @observable public selectedTags: ITag[] = [];
 
   @action
   public startEditing(meal: Meal): void {
@@ -25,8 +27,15 @@ export class MealViewerState {
     this.cancelEdits();
   };
 
+  @action
   public cancelEdits(): void {
     this.mealCopy = undefined;
     this.editing = false;
   }
+
+  @action
+  public selectTag = (tag: ITag) => {
+    this.selectedTags.push(tag);
+    console.log("added tag to list", this.selectedTags);
+  };
 }

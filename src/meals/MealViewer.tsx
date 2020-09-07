@@ -1,9 +1,11 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 
 import { observer } from "mobx-react";
 
-import { Button, InputGroup, TextArea } from "@blueprintjs/core";
+import { Button, InputGroup, Tag, TextArea } from "@blueprintjs/core";
+import { MultiSelect } from "@blueprintjs/select";
 
+import { ITag, SystemTags } from "../fixed/SystemTags";
 import { MealState } from "./MealState";
 
 import "./meal-viewer.scss";
@@ -91,7 +93,9 @@ export class MealViewer extends React.Component<MVProps> {
     const editMeal = this.props.mealState.viewerState.mealCopy;
     return (
       <div className={"meal-editor-container"}>
-        <span>Title:</span>
+        <p>Tags:</p>
+        {this.renderTagsEditor()}
+        <p>Title:</p>
         <InputGroup
           className={"title-field edit"}
           value={editMeal.title}
@@ -100,7 +104,7 @@ export class MealViewer extends React.Component<MVProps> {
             editMeal.title = event.target.value;
           }}
         />
-        <span>Servings:</span>
+        <p>Servings:</p>
         <InputGroup
           className={"servings-field edit"}
           value={editMeal.servings}
@@ -120,6 +124,44 @@ export class MealViewer extends React.Component<MVProps> {
           }}
         />
       </div>
+    );
+  }
+
+  private renderTagsEditor(): JSX.Element {
+    const tags: ITag[] = SystemTags.getSystemTags();
+    const selectedTags: ITag[] = this.props.mealState.viewerState.selectedTags;
+    console.log("rendering tag chooser");
+    return (
+      <MultiSelect
+        key={"tag-select-" + selectedTags.length}
+        resetOnSelect={true}
+        items={tags}
+        selectedItems={selectedTags}
+        onItemSelect={(item: ITag, event?: SyntheticEvent<HTMLElement>) =>
+          this.onTagSelect(item, event)
+        }
+        itemRenderer={(tag: ITag, {}) => this.renderSelectedTag(tag)}
+        tagRenderer={(tag: ITag) => this.renderSelectedTag(tag)}
+      />
+    );
+  }
+
+  private onTagSelect = (tag: ITag, event?: SyntheticEvent<HTMLElement>) => {
+    console.log("selected tag: ", tag.label);
+    this.props.mealState.viewerState.selectTag(tag);
+  };
+
+  private renderSelectedTag(tag: ITag): JSX.Element {
+    return (
+      <Tag
+        key={tag.id}
+        interactive={true}
+        onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+          this.onTagSelect(tag);
+        }}
+      >
+        {tag.label}
+      </Tag>
     );
   }
 }
