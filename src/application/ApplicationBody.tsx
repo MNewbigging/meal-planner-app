@@ -7,6 +7,7 @@ import { HomePage } from "../home/HomePage";
 import { ListPage } from "../list/ListPage";
 import { Login } from "../login/Login";
 import { MealsPage } from "../meals/MealsPage";
+import { SettingsPage } from "../settings/SettingsPage";
 import { ApplicationNavbar } from "./ApplicationNavbar";
 
 interface ApplicationProps {
@@ -50,6 +51,9 @@ export class ApplicationBody extends React.Component<ApplicationProps> {
         toRender.push(
           <ListPage key={"list-page"} listState={appState.listState} />
         );
+        break;
+      case App.SETTINGS:
+        toRender.push(<SettingsPage />);
         break;
     }
 

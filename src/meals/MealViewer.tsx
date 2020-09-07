@@ -2,7 +2,7 @@ import React from "react";
 
 import { observer } from "mobx-react";
 
-import { Button, InputGroup, Tag, TextArea } from "@blueprintjs/core";
+import { Button, InputGroup, TextArea } from "@blueprintjs/core";
 
 import { MealState } from "./MealState";
 

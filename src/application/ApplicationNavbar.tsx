@@ -32,6 +32,11 @@ export class ApplicationNavbar extends React.Component<NavbarProps> {
           text={"LIST"}
           onClick={() => this.props.toPage(App.LIST)}
         />
+        <Button
+          className={"navbar-link"}
+          text={"SETTINGS"}
+          onClick={() => this.props.toPage(App.SETTINGS)}
+        />
       </div>
     );
   }
