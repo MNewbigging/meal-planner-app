@@ -24,6 +24,7 @@ export class MealViewerState {
 
   public saveEdits = (meals: Meal[], selectedMeal: number): void => {
     meals[selectedMeal] = this.mealCopy;
+    console.log("saving meal, tags:", meals[selectedMeal].tags);
     this.cancelEdits();
   };
 
@@ -36,6 +37,5 @@ export class MealViewerState {
   @action
   public selectTag = (tag: ITag) => {
     this.selectedTags.push(tag);
-    console.log("added tag to list", this.selectedTags);
   };
 }

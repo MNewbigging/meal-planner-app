@@ -26,4 +26,9 @@ export class SystemTags {
   public static getSystemTags(): ITag[] {
     return [this.BREAKFAST, this.LUNCH, this.DINNER, this.SNACK];
   }
+
+  public static getSystemTag(id: string) {
+    const systemTags: ITag[] = this.getSystemTags();
+    return systemTags.find((tag) => tag.id === id);
+  }
 }

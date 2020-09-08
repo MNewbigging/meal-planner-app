@@ -7,6 +7,7 @@ import { IItemRendererProps, MultiSelect } from "@blueprintjs/select";
 
 import { ITag } from "../fixed/SystemTags";
 import { TagMultiSelectState } from "./TagMultiSelectState";
+import { Meal } from "../meals/MealState";
 
 import "./tag-multi-select.scss";
 
@@ -14,6 +15,7 @@ const TagSelect = MultiSelect.ofType<ITag>();
 
 interface TMSProps {
   items: ITag[];
+  meal: Meal;
 }
 
 @observer
@@ -22,7 +24,7 @@ export class TagMultiSelect extends React.Component<TMSProps> {
 
   constructor(props: TMSProps) {
     super(props);
-    this.tagSelectState = new TagMultiSelectState(props.items);
+    this.tagSelectState = new TagMultiSelectState(props.items, props.meal);
   }
 
   public render() {
@@ -68,7 +70,6 @@ export class TagMultiSelect extends React.Component<TMSProps> {
     let results: ITag[] = [];
     // Check for an empty query first
     if (query === "") {
-      console.log("query is empty");
       results = items;
       return results;
     }

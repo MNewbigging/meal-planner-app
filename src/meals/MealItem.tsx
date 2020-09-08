@@ -1,8 +1,11 @@
 import React from "react";
 
-import { Card, Elevation } from "@blueprintjs/core";
+import { Card, Elevation, Tag } from "@blueprintjs/core";
 
+import { SystemTags } from "../fixed/SystemTags";
 import { Meal } from "./MealState";
+
+import "./meal-item.scss";
 
 interface MealItemProps {
   meal: Meal;
@@ -21,13 +24,28 @@ export class MealItem extends React.Component<MealItemProps> {
     }
 
     return (
-      <Card
-        className={className}
-        elevation={elevation}
-        onClick={() => this.props.onClick()}
-      >
-        {this.props.meal.title}
+      <Card className={className} elevation={elevation} onClick={() => this.props.onClick()}>
+        {this.renderTitle()}
+        {this.renderTags()}
       </Card>
     );
+  }
+
+  private renderTitle(): JSX.Element {
+    return <div className={"meal-title"}>{this.props.meal.title}</div>;
+  }
+
+  private renderTags(): JSX.Element {
+    const toRender: JSX.Element[] = [];
+    this.props.meal.tags.forEach((tagId) => {
+      const tag = SystemTags.getSystemTag(tagId);
+      toRender.push(
+        <Tag key={"meal-tag-" + tag.id} className={"meal-tag"}>
+          {tag.label}
+        </Tag>
+      );
+    });
+
+    return <div className={"meal-tags-container"}>{toRender}</div>;
   }
 }

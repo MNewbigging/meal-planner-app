@@ -36,13 +36,7 @@ export class MealViewer extends React.Component<MVProps> {
     const controls: JSX.Element[] = [];
 
     if (vs.editing) {
-      controls.push(
-        <Button
-          key={"mve-cancel"}
-          text={"Cancel"}
-          onClick={() => vs.cancelEdits()}
-        />
-      );
+      controls.push(<Button key={"mve-cancel"} text={"Cancel"} onClick={() => vs.cancelEdits()} />);
       controls.push(
         <Button
           key={"mve-save"}
@@ -89,13 +83,14 @@ export class MealViewer extends React.Component<MVProps> {
     );
   }
 
+  // TODO - put this in its own component
   private renderMealEditor(): JSX.Element {
     const editMeal = this.props.mealState.viewerState.mealCopy;
     const tags: ITag[] = SystemTags.getSystemTags();
     return (
       <div className={"meal-editor-container"}>
         <p>Tags:</p>
-        <TagMultiSelect items={tags} />
+        <TagMultiSelect items={tags} meal={editMeal} />
         <p>Title:</p>
         <InputGroup
           className={"title-field edit"}
