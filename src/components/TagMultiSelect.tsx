@@ -6,8 +6,8 @@ import { MenuItem, Tag } from "@blueprintjs/core";
 import { IItemRendererProps, MultiSelect } from "@blueprintjs/select";
 
 import { ITag } from "../fixed/SystemTags";
-import { TagMultiSelectState } from "./TagMultiSelectState";
 import { Meal } from "../meals/MealState";
+import { TagMultiSelectState } from "./TagMultiSelectState";
 
 import "./tag-multi-select.scss";
 

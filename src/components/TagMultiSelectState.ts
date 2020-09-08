@@ -13,6 +13,13 @@ export class TagMultiSelectState {
     this.allOptions = options;
     this.remainingOptions = options;
     this.meal = meal;
+    // Initialise selected options with tags already set against meal
+    this.meal.tags.forEach((tagId) => {
+      const tag: ITag = this.allOptions.find((opt: ITag) => opt.id === tagId);
+      if (tag) {
+        this.selectTag(tag);
+      }
+    });
   }
 
   @action
@@ -32,6 +39,7 @@ export class TagMultiSelectState {
   public removeTag = (_value: string, index: number) => {
     this.remainingOptions.push(this.selectedOptions[index]);
     this.selectedOptions = this.selectedOptions.filter((_tag, i) => i !== index);
+    this.saveTagsToMeal();
   };
 
   private saveTagsToMeal() {
