@@ -27,6 +27,12 @@ class MealState {
   public addMeal(meal: IMeal): void {
     this.meals.push(meal);
   }
+
+  public removeTagFromMeals(tagId: string): void {
+    this.meals.forEach((meal) => {
+      meal.tags = meal.tags.filter((mt) => mt !== tagId);
+    });
+  }
 }
 
 export const mealState = new MealState();

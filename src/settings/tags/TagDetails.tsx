@@ -6,6 +6,7 @@ import { Button, Icon, InputGroup, Popover, Tag } from "@blueprintjs/core";
 
 import { CirclePicker, ColorResult } from "react-color";
 
+import { mealState } from "../../state/MealState";
 import { ITag } from "../../state/TagState";
 import { tagState } from "../../state/TagState";
 import { SettingsState } from "../SettingsState";
@@ -55,7 +56,7 @@ export class TagDetails extends React.Component<TagDetailsProps> {
           key={ut.id}
           large={true}
           style={{ backgroundColor: ut.color }}
-          onRemove={() => tagState.removeTag(ut.id)}
+          onRemove={() => this.onRemoveTag(ut.id)}
         >
           {ut.label}
         </Tag>
@@ -116,5 +117,10 @@ export class TagDetails extends React.Component<TagDetailsProps> {
     const tagColor: string = ss.tagCreatorColor;
     tagState.createTag(tagLabel, tagColor);
     ss.clearTagCreatorInput();
+  }
+
+  private onRemoveTag(tagId: string) {
+    mealState.removeTagFromMeals(tagId);
+    tagState.removeTag(tagId);
   }
 }
