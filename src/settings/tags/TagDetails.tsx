@@ -6,7 +6,7 @@ import { Button, Icon, InputGroup, Popover, Tag } from "@blueprintjs/core";
 
 import { CirclePicker, ColorResult } from "react-color";
 
-import { alertState } from "../../state/AlertState";
+import { AlertProps, alertState } from "../../state/AlertState";
 import { mealState } from "../../state/MealState";
 import { ITag } from "../../state/TagState";
 import { tagState } from "../../state/TagState";
@@ -123,9 +123,11 @@ export class TagDetails extends React.Component<TagDetailsProps> {
   private async onRemoveTag(tagId: string) {
     // Check if meals are using this tag
     if (mealState.tagInUse(tagId)) {
-      const alertResult = await alertState.showAlert(
-        "You currently have meals using this tag, are you sure you want to delete it?"
-      );
+      const alertResult = await alertState.showAlert({
+        message: "You currently have meals using this tag, are you sure you want to delete it?",
+        confirmText: "Yes",
+        cancelText: "Cancel",
+      });
       if (alertResult) {
         this.removeTag(tagId);
       }

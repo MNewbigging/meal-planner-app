@@ -9,17 +9,20 @@ import { alertState } from "../state/AlertState";
 @observer
 export class Alerter extends React.Component {
   public render() {
+    const message = alertState.alertProps.message;
+    const confirmText = alertState.alertProps.confirmText;
+    const cancelText = alertState.alertProps.cancelText;
     return (
       <Alert
         className={"alert-container"}
         isOpen={alertState.alertOpen}
-        confirmButtonText={"Ok"}
-        cancelButtonText={"Cancel"}
+        confirmButtonText={confirmText}
+        cancelButtonText={cancelText}
         onClose={() => this.onAlertClose()}
         onConfirm={() => this.onAlertConfirm()}
         onCancel={() => this.onAlertCancel()}
       >
-        <div className={"alert-content"}>{alertState.alertMessage}</div>
+        <div className={"alert-content"}>{message}</div>
       </Alert>
     );
   }
