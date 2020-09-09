@@ -7,18 +7,20 @@ export interface ITag {
 }
 
 class TagState {
-  private allTags: ITag[] = [];
+  private userTags: ITag[] = [];
+  private systemTags: ITag[] = [];
 
   constructor() {
-    this.allTags = SystemTags.getSystemTags();
+    this.systemTags.push(...SystemTags.getSystemTags());
   }
 
   public getAllTags(): ITag[] {
-    return this.allTags;
+    return [...this.systemTags, ...this.userTags];
   }
 
   public getTag(id: string) {
-    return this.allTags.find((tag) => tag.id === id);
+    const allTags: ITag[] = [...this.systemTags, ...this.userTags];
+    return allTags.find((tag) => tag.id === id);
   }
 
   public createTag(name: string) {
@@ -26,7 +28,7 @@ class TagState {
       id: randomId.createId(6),
       label: name,
     };
-    this.allTags.push(tag);
+    this.userTags.push(tag);
   }
 }
 
