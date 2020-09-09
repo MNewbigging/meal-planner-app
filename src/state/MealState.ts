@@ -33,6 +33,17 @@ class MealState {
       meal.tags = meal.tags.filter((mt) => mt !== tagId);
     });
   }
+
+  public tagInUse(tagId: string): boolean {
+    for (const meal of this.meals) {
+      for (const tag of meal.tags) {
+        if (tag === tagId) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 }
 
 export const mealState = new MealState();
