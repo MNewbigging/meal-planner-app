@@ -1,3 +1,5 @@
+import { observable } from "mobx";
+
 import { SystemTags } from "../fixed/SystemTags";
 import { randomId } from "../util/RandomId";
 
@@ -8,7 +10,7 @@ export interface ITag {
 }
 
 class TagState {
-  private userTags: ITag[] = [];
+  @observable private userTags: ITag[] = [];
   private systemTags: ITag[] = [];
 
   constructor() {
@@ -17,6 +19,14 @@ class TagState {
 
   public getAllTags(): ITag[] {
     return [...this.systemTags, ...this.userTags];
+  }
+
+  public getSystemTags(): ITag[] {
+    return this.systemTags;
+  }
+
+  public getUserTags(): ITag[] {
+    return this.userTags;
   }
 
   public getTag(id: string) {
@@ -31,6 +41,10 @@ class TagState {
       color: col,
     };
     this.userTags.push(tag);
+  }
+
+  public removeTag(id: string) {
+    this.userTags = this.userTags.filter((tag) => tag.id !== id);
   }
 }
 

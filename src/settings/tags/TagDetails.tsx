@@ -2,7 +2,7 @@ import React from "react";
 
 import { observer } from "mobx-react";
 
-import { Button, Icon, InputGroup, Popover, Tag } from "@blueprintjs/core";
+import { Button, Icon, InputGroup, ITagProps, Popover, Tag } from "@blueprintjs/core";
 
 import { CirclePicker, ColorResult } from "react-color";
 
@@ -38,11 +38,26 @@ export class TagDetails extends React.Component<TagDetailsProps> {
 
   private renderTags(): JSX.Element {
     const toRender: JSX.Element[] = [];
-    const allTags: ITag[] = tagState.getAllTags();
-    allTags.forEach((tag) => {
+    const sysTags: ITag[] = tagState.getSystemTags();
+    sysTags.forEach((st) => {
       toRender.push(
-        <Tag className={"tag"} key={tag.id} style={{ backgroundColor: tag.color }}>
-          {tag.label}
+        <Tag className={"tag"} key={st.id} large={true} style={{ backgroundColor: st.color }}>
+          {st.label}
+        </Tag>
+      );
+    });
+
+    const userTags: ITag[] = tagState.getUserTags();
+    userTags.forEach((ut) => {
+      toRender.push(
+        <Tag
+          className={"tag"}
+          key={ut.id}
+          large={true}
+          style={{ backgroundColor: ut.color }}
+          onRemove={() => tagState.removeTag(ut.id)}
+        >
+          {ut.label}
         </Tag>
       );
     });
