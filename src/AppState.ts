@@ -25,7 +25,7 @@ export class AppState {
   public settingsState: SettingsState;
 
   constructor() {
-    this.app = App.MEALS;
+    this.app = App.SETTINGS;
     this.loginState = new LoginState();
     this.listState = new ListState();
     this.mealState = new MealState();

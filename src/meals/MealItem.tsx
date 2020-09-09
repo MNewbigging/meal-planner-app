@@ -2,7 +2,7 @@ import React from "react";
 
 import { Card, Elevation, Tag } from "@blueprintjs/core";
 
-import { SystemTags } from "../fixed/SystemTags";
+import { tagState } from "../state/TagState";
 import { Meal } from "./MealState";
 
 import "./meal-item.scss";
@@ -38,7 +38,7 @@ export class MealItem extends React.Component<MealItemProps> {
   private renderTags(): JSX.Element {
     const toRender: JSX.Element[] = [];
     this.props.meal.tags.forEach((tagId) => {
-      const tag = SystemTags.getSystemTag(tagId);
+      const tag = tagState.getTag(tagId);
       toRender.push(
         <Tag key={"meal-tag-" + tag.id} className={"meal-tag"}>
           {tag.label}

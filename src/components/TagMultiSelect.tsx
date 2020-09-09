@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 import { MenuItem, Tag } from "@blueprintjs/core";
 import { IItemRendererProps, MultiSelect } from "@blueprintjs/select";
 
-import { ITag } from "../fixed/SystemTags";
+import { ITag } from "../state/TagState";
 import { Meal } from "../meals/MealState";
 import { TagMultiSelectState } from "./TagMultiSelectState";
 

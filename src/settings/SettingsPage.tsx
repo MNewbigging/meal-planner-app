@@ -39,7 +39,7 @@ export class SettingsPage extends React.Component<SPProps> {
     const toRender: JSX.Element[] = [];
     switch (this.props.settingsState.selectedSetting) {
       case Settings.TAGS:
-        toRender.push(<TagDetails key={"tag-details"} />);
+        toRender.push(<TagDetails key={"tag-details"} settingsState={this.props.settingsState} />);
         break;
     }
 

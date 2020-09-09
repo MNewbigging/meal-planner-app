@@ -1,7 +1,4 @@
-export interface ITag {
-  id: string;
-  label: string;
-}
+import { ITag } from "../state/TagState";
 
 export class SystemTags {
   public static BREAKFAST: ITag = {

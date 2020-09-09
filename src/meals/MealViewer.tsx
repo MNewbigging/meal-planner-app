@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 import { Button, InputGroup, TextArea } from "@blueprintjs/core";
 
 import { TagMultiSelect } from "../components/TagMultiSelect";
-import { ITag, SystemTags } from "../fixed/SystemTags";
+import { ITag, tagState } from "../state/TagState";
 import { MealState } from "./MealState";
 
 import "./meal-viewer.scss";
@@ -86,7 +86,7 @@ export class MealViewer extends React.Component<MVProps> {
   // TODO - put this in its own component
   private renderMealEditor(): JSX.Element {
     const editMeal = this.props.mealState.viewerState.mealCopy;
-    const tags: ITag[] = SystemTags.getSystemTags();
+    const tags: ITag[] = tagState.getAllTags();
     return (
       <div className={"meal-editor-container"}>
         <p>Tags:</p>

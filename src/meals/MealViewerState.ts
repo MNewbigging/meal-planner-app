@@ -1,6 +1,6 @@
 import { action, observable } from "mobx";
 
-import { ITag } from "../fixed/SystemTags";
+import { ITag } from "../state/TagState";
 import { Meal } from "./MealState";
 
 export class MealViewerState {
