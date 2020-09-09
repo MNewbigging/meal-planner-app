@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 import { MenuItem, Tag } from "@blueprintjs/core";
 import { IItemRendererProps, MultiSelect } from "@blueprintjs/select";
 
-import { Meal } from "../meals/MealState";
+import { IMeal } from "../state/MealState";
 import { ITag } from "../state/TagState";
 import { TagMultiSelectState } from "./TagMultiSelectState";
 
@@ -15,7 +15,7 @@ const TagSelect = MultiSelect.ofType<ITag>();
 
 interface TMSProps {
   items: ITag[];
-  meal: Meal;
+  meal: IMeal;
 }
 
 @observer

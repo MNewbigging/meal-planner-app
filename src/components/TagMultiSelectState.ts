@@ -1,20 +1,20 @@
 import { action, observable } from "mobx";
 
 import { ITag } from "../state/TagState";
-import { Meal } from "../meals/MealState";
+import { IMeal } from "../state/MealState";
 
 export class TagMultiSelectState {
-  public meal: Meal;
+  public meal: IMeal;
   public allOptions: ITag[];
   @observable public remainingOptions: ITag[];
   @observable public selectedOptions: ITag[] = [];
 
-  constructor(options: ITag[], meal: Meal) {
+  constructor(options: ITag[], meal: IMeal) {
     this.allOptions = options;
     this.remainingOptions = options;
     this.meal = meal;
     // Initialise selected options with tags already set against meal
-    this.meal.tags.forEach((tagId) => {
+    this.meal.tags.forEach((tagId: string) => {
       const tag: ITag = this.allOptions.find((opt: ITag) => opt.id === tagId);
       if (tag) {
         this.selectTag(tag);

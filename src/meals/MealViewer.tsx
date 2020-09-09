@@ -5,13 +5,14 @@ import { observer } from "mobx-react";
 import { Button, InputGroup, TextArea } from "@blueprintjs/core";
 
 import { TagMultiSelect } from "../components/TagMultiSelect";
+import { mealState } from "../state/MealState";
 import { ITag, tagState } from "../state/TagState";
-import { MealState } from "./MealState";
+import { MealPageState } from "./MealPageState";
 
 import "./meal-viewer.scss";
 
 interface MVProps {
-  mealState: MealState;
+  mealState: MealPageState;
 }
 
 @observer
@@ -41,7 +42,7 @@ export class MealViewer extends React.Component<MVProps> {
         <Button
           key={"mve-save"}
           text={"Save"}
-          onClick={() => vs.saveEdits(ms.meals, ms.selectedMeal)}
+          onClick={() => vs.saveEdits(mealState.getMeals(), ms.selectedMeal)}
         />
       );
     } else {
@@ -50,7 +51,7 @@ export class MealViewer extends React.Component<MVProps> {
           key={"mv-edit"}
           text={"Edit"}
           icon={"edit"}
-          onClick={() => vs.startEditing(ms.meals[ms.selectedMeal])}
+          onClick={() => vs.startEditing(mealState.getMeals()[ms.selectedMeal])}
         />
       );
     }
@@ -69,7 +70,7 @@ export class MealViewer extends React.Component<MVProps> {
 
   private renderMealDetails(): JSX.Element {
     const ms = this.props.mealState;
-    const meal = ms.meals[ms.selectedMeal];
+    const meal = mealState.getMeal(ms.selectedMeal);
     return (
       <div className={"meal-details-container"}>
         <h1 className={"title-field"}>{meal.title}</h1>

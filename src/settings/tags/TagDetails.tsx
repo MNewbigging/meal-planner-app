@@ -2,7 +2,7 @@ import React from "react";
 
 import { observer } from "mobx-react";
 
-import { Button, Icon, InputGroup, ITagProps, Popover, Tag } from "@blueprintjs/core";
+import { Button, Icon, InputGroup, Popover, Tag } from "@blueprintjs/core";
 
 import { CirclePicker, ColorResult } from "react-color";
 

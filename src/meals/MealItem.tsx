@@ -2,14 +2,14 @@ import React from "react";
 
 import { Card, Elevation, Tag } from "@blueprintjs/core";
 
+import { IMeal } from "../state/MealState";
 import { tagState } from "../state/TagState";
-import { Meal } from "./MealState";
 
 import "./meal-item.scss";
 
 interface MealItemProps {
-  meal: Meal;
-  selectedMeal: Meal;
+  meal: IMeal;
+  selectedMeal: IMeal;
   onClick: () => void;
 }
 

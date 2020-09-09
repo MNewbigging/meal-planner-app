@@ -2,7 +2,7 @@ import { action, observable } from "mobx";
 
 import { ListState } from "./list/ListState";
 import { LoginState } from "./login/LoginState";
-import { MealState } from "./meals/MealState";
+import { MealPageState } from "./meals/MealPageState";
 import { SettingsState } from "./settings/SettingsState";
 
 // This allows app to control which top-level component is shown
@@ -21,14 +21,14 @@ export class AppState {
   @observable public app: App;
   public loginState: LoginState;
   public listState: ListState;
-  public mealState: MealState;
+  public mealState: MealPageState;
   public settingsState: SettingsState;
 
   constructor() {
     this.app = App.SETTINGS;
     this.loginState = new LoginState();
     this.listState = new ListState();
-    this.mealState = new MealState();
+    this.mealState = new MealPageState();
     this.settingsState = new SettingsState();
   }
 

@@ -1,18 +1,18 @@
 import { action, observable } from "mobx";
 
+import { IMeal } from "../state/MealState";
 import { ITag } from "../state/TagState";
-import { Meal } from "./MealState";
 
 export class MealViewerState {
   @observable public editing: boolean = false;
-  @observable public mealCopy: Meal | undefined;
+  @observable public mealCopy: IMeal | undefined;
   @observable public selectedTags: ITag[] = [];
 
   @action
-  public startEditing(meal: Meal): void {
+  public startEditing(meal: IMeal): void {
     this.editing = true;
     // Make a new meal copy of the one to edit
-    const newMeal: Meal = {
+    const newMeal: IMeal = {
       id: meal.id,
       title: meal.title,
       method: meal.method,
@@ -22,9 +22,8 @@ export class MealViewerState {
     this.mealCopy = newMeal;
   }
 
-  public saveEdits = (meals: Meal[], selectedMeal: number): void => {
+  public saveEdits = (meals: IMeal[], selectedMeal: number): void => {
     meals[selectedMeal] = this.mealCopy;
-    console.log("saving meal, tags:", meals[selectedMeal].tags);
     this.cancelEdits();
   };
 

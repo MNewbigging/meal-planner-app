@@ -6,15 +6,16 @@ import { Button, Card, InputGroup } from "@blueprintjs/core";
 
 import SplitPane, { Pane } from "react-split-pane";
 
+import { IMeal, mealState } from "../state/MealState";
 import { MealItem } from "./MealItem";
-import { Meal, MealState } from "./MealState";
+import { MealPageState } from "./MealPageState";
 import { MealViewer } from "./MealViewer";
 
 import "../misc-styles/pane-resizer.scss";
 import "./meals-page.scss";
 
 interface MealsPageProps {
-  mealState: MealState;
+  mealPageState: MealPageState;
 }
 
 @observer
@@ -33,7 +34,7 @@ export class MealsPage extends React.Component<MealsPageProps> {
             {this.renderMeals()}
           </Pane>
           <Pane className={"details-pane"}>
-            <MealViewer mealState={this.props.mealState} />
+            <MealViewer mealState={this.props.mealPageState} />
           </Pane>
         </SplitPane>
       </div>
@@ -41,7 +42,7 @@ export class MealsPage extends React.Component<MealsPageProps> {
   }
 
   private renderMealControls(): JSX.Element {
-    const ms = this.props.mealState;
+    const ms = this.props.mealPageState;
     return (
       <Card className={"meals-control-container"} elevation={2}>
         <div className={"meals-control"}>
@@ -67,30 +68,31 @@ export class MealsPage extends React.Component<MealsPageProps> {
   }
 
   private onAddMeal(): void {
-    const ms = this.props.mealState;
-    const mealId: number = ms.meals.length;
+    const ms = this.props.mealPageState;
+    const mealId: number = mealState.getMeals().length;
     const mealTitle: string = ms.addMealTitle;
-    const newMeal: Meal = {
+    const newMeal: IMeal = {
       id: mealId,
       title: mealTitle,
       method: "",
       servings: "2",
       tags: [],
     };
-    ms.addMeal(newMeal);
+    mealState.addMeal(newMeal);
     ms.selectMeal(mealId);
     ms.clearMealTitle();
   }
 
   private renderMeals(): JSX.Element {
-    const ms = this.props.mealState;
+    const ms = this.props.mealPageState;
     const meals: JSX.Element[] = [];
-    ms.meals.forEach((meal) => {
+    const iMeals: IMeal[] = mealState.getMeals();
+    iMeals.forEach((meal) => {
       meals.push(
         <MealItem
           key={"mi-" + meal.id}
           meal={meal}
-          selectedMeal={ms.meals[ms.selectedMeal]}
+          selectedMeal={iMeals[ms.selectedMeal]}
           onClick={() => ms.selectMeal(meal.id)}
         />
       );
