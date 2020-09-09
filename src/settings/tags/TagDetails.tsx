@@ -37,8 +37,8 @@ export class TagDetails extends React.Component<TagDetailsProps> {
   private renderTags(): JSX.Element {
     const toRender: JSX.Element[] = [];
     // Get all system tags
-    const systemTags: ITag[] = tagState.getAllTags();
-    systemTags.forEach((tag) => {
+    const allTags: ITag[] = tagState.getAllTags();
+    allTags.forEach((tag) => {
       toRender.push(
         <Tag className={"tag"} key={tag.id}>
           {tag.label}

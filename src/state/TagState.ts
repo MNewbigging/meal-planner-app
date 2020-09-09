@@ -1,4 +1,5 @@
 import { SystemTags } from "../fixed/SystemTags";
+import { randomId } from "../util/RandomId";
 
 export interface ITag {
   id: string;
@@ -18,6 +19,14 @@ class TagState {
 
   public getTag(id: string) {
     return this.allTags.find((tag) => tag.id === id);
+  }
+
+  public createTag(name: string) {
+    const tag: ITag = {
+      id: randomId.createId(6),
+      label: name,
+    };
+    this.allTags.push(tag);
   }
 }
 
