@@ -4,6 +4,7 @@ import { randomId } from "../util/RandomId";
 export interface ITag {
   id: string;
   label: string;
+  color: string;
 }
 
 class TagState {
@@ -23,10 +24,11 @@ class TagState {
     return allTags.find((tag) => tag.id === id);
   }
 
-  public createTag(name: string) {
+  public createTag(name: string, col: string) {
     const tag: ITag = {
       id: randomId.createId(6),
       label: name,
+      color: col,
     };
     this.userTags.push(tag);
   }

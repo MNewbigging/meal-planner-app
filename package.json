@@ -18,10 +18,12 @@
   "dependencies": {
     "@blueprintjs/core": "^3.31.0",
     "@blueprintjs/select": "^3.13.7",
+    "@types/react-color": "^3.0.4",
     "axios": "^0.19.2",
     "mobx": "^5.15.4",
     "mobx-react": "^6.2.2",
     "react": "^16.13.1",
+    "react-color": "^2.18.1",
     "react-dom": "^16.13.1",
     "react-split-pane": "^0.1.92",
     "tslint": "^6.1.2"

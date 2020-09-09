@@ -2,7 +2,9 @@ import React from "react";
 
 import { observer } from "mobx-react";
 
-import { Button, InputGroup, Tag } from "@blueprintjs/core";
+import { Button, Icon, InputGroup, Popover, Tag } from "@blueprintjs/core";
+
+import { CirclePicker, ColorResult } from "react-color";
 
 import { ITag } from "../../state/TagState";
 import { tagState } from "../../state/TagState";
@@ -36,11 +38,10 @@ export class TagDetails extends React.Component<TagDetailsProps> {
 
   private renderTags(): JSX.Element {
     const toRender: JSX.Element[] = [];
-    // Get all system tags
     const allTags: ITag[] = tagState.getAllTags();
     allTags.forEach((tag) => {
       toRender.push(
-        <Tag className={"tag"} key={tag.id}>
+        <Tag className={"tag"} key={tag.id} style={{ backgroundColor: tag.color }}>
           {tag.label}
         </Tag>
       );
@@ -61,6 +62,7 @@ export class TagDetails extends React.Component<TagDetailsProps> {
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             ss.setTagCreatorInput(event.target.value);
           }}
+          leftElement={this.renderColourPicker()}
           rightElement={
             <Button
               minimal={true}
@@ -74,10 +76,30 @@ export class TagDetails extends React.Component<TagDetailsProps> {
     );
   }
 
+  private renderColourPicker(): JSX.Element {
+    const ss = this.props.settingsState;
+    return (
+      <Popover>
+        <Button
+          icon={<Icon icon={"full-circle"} color={ss.tagCreatorColor} />}
+          rightIcon={"caret-down"}
+        />
+        <CirclePicker
+          className={"color-picker"}
+          color={ss.tagCreatorColor}
+          onChangeComplete={(col: ColorResult) => {
+            ss.setTagCreatorColor(col.hex);
+          }}
+        />
+      </Popover>
+    );
+  }
+
   private onAddTag(): void {
     const ss = this.props.settingsState;
     const tagLabel: string = ss.tagCreatorInput;
-    tagState.createTag(tagLabel);
+    const tagColor: string = ss.tagCreatorColor;
+    tagState.createTag(tagLabel, tagColor);
     ss.clearTagCreatorInput();
   }
 }

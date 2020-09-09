@@ -40,7 +40,11 @@ export class MealItem extends React.Component<MealItemProps> {
     this.props.meal.tags.forEach((tagId) => {
       const tag = tagState.getTag(tagId);
       toRender.push(
-        <Tag key={"meal-tag-" + tag.id} className={"meal-tag"}>
+        <Tag
+          key={"meal-tag-" + tag.id}
+          className={"meal-tag"}
+          style={{ backgroundColor: tag.color }}
+        >
           {tag.label}
         </Tag>
       );

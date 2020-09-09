@@ -5,8 +5,8 @@ import { observer } from "mobx-react";
 import { MenuItem, Tag } from "@blueprintjs/core";
 import { IItemRendererProps, MultiSelect } from "@blueprintjs/select";
 
-import { ITag } from "../state/TagState";
 import { Meal } from "../meals/MealState";
+import { ITag } from "../state/TagState";
 import { TagMultiSelectState } from "./TagMultiSelectState";
 
 import "./tag-multi-select.scss";
@@ -52,6 +52,7 @@ export class TagMultiSelect extends React.Component<TMSProps> {
       <Tag
         className={"tag-option"}
         key={tag.id + "-option"}
+        style={{ backgroundColor: tag.color }}
         interactive={true}
         onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
           props.handleClick(event);
@@ -63,7 +64,11 @@ export class TagMultiSelect extends React.Component<TMSProps> {
   }
 
   private tagRenderer(tag: ITag) {
-    return <Tag key={tag.id + "-selected"}>{tag.label}</Tag>;
+    return (
+      <Tag key={tag.id + "-selected"} style={{ backgroundColor: tag.color }}>
+        {tag.label}
+      </Tag>
+    );
   }
 
   public filterOptionsOnQuery = (query: string, items: ITag[]) => {
