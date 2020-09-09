@@ -3,6 +3,7 @@ import * as React from "react";
 import { observer } from "mobx-react";
 
 import { App, AppState } from "../AppState";
+import { Alerter } from "../components/Alerter";
 import { HomePage } from "../home/HomePage";
 import { ListPage } from "../list/ListPage";
 import { Login } from "../login/Login";
@@ -29,6 +30,10 @@ export class ApplicationBody extends React.Component<ApplicationProps> {
 
     // Put everything to render in array
     const toRender: JSX.Element[] = [];
+
+    // Add the alerter to render array
+    toRender.push(<Alerter key={"alerter"} />);
+
     // Add the app navbar to render array
     toRender.push(<ApplicationNavbar key={"navbar"} toPage={appState.toPage} />);
 
