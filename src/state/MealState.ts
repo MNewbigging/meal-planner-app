@@ -15,6 +15,10 @@ class MealState {
     return this.meals;
   }
 
+  public createMealId(): number {
+    return this.meals.length;
+  }
+
   public getMeal(idx: number) {
     return this.meals[idx];
   }

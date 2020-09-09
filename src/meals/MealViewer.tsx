@@ -51,7 +51,7 @@ export class MealViewer extends React.Component<MVProps> {
           key={"mv-edit"}
           text={"Edit"}
           icon={"edit"}
-          onClick={() => vs.startEditing(mealState.getMeals()[ms.selectedMeal])}
+          onClick={() => vs.startEditing(mealState.getMeal(ms.selectedMeal))}
         />
       );
     }

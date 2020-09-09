@@ -69,7 +69,7 @@ export class MealsPage extends React.Component<MealsPageProps> {
 
   private onAddMeal(): void {
     const ms = this.props.mealPageState;
-    const mealId: number = mealState.getMeals().length;
+    const mealId: number = mealState.createMealId();
     const mealTitle: string = ms.addMealTitle;
     const newMeal: IMeal = {
       id: mealId,
