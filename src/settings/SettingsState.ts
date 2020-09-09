@@ -13,6 +13,11 @@ export class SettingsState {
     this.tagCreatorInput = val;
   }
 
+  @action
+  public clearTagCreatorInput(): void {
+    this.tagCreatorInput = "";
+  }
+
   public tagCreatorInputValid(): boolean {
     return this.tagCreatorInput !== "";
   }

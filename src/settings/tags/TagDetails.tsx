@@ -62,10 +62,22 @@ export class TagDetails extends React.Component<TagDetailsProps> {
             ss.setTagCreatorInput(event.target.value);
           }}
           rightElement={
-            <Button minimal={true} icon={"insert"} disabled={!ss.tagCreatorInputValid()} />
+            <Button
+              minimal={true}
+              icon={"insert"}
+              disabled={!ss.tagCreatorInputValid()}
+              onClick={() => this.onAddTag()}
+            />
           }
         />
       </div>
     );
+  }
+
+  private onAddTag(): void {
+    const ss = this.props.settingsState;
+    const tagLabel: string = ss.tagCreatorInput;
+    tagState.createTag(tagLabel);
+    ss.clearTagCreatorInput();
   }
 }
