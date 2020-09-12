@@ -18,10 +18,8 @@ export class ListPage extends React.Component<ListPageProps> {
   public render() {
     return (
       <div className={"page-container"}>
-        <Card className={"list-container"} elevation={2}>
-          {this.renderListControls()}
-          {this.renderList()}
-        </Card>
+        {this.renderListControls()}
+        {this.renderList()}
       </div>
     );
   }
@@ -29,7 +27,7 @@ export class ListPage extends React.Component<ListPageProps> {
   private renderListControls(): JSX.Element {
     const ls = this.props.listState;
     return (
-      <div className={"list-controls"}>
+      <Card className={"list-controls"}>
         <InputGroup
           placeholder={"Add item..."}
           value={ls.addItemLabel}
@@ -56,7 +54,7 @@ export class ListPage extends React.Component<ListPageProps> {
             />
           }
         />
-      </div>
+      </Card>
     );
   }
 
@@ -87,13 +85,15 @@ export class ListPage extends React.Component<ListPageProps> {
           item={item}
           checkItem={(id: number) => ls.setItemChecked(id)}
           deleteItem={(id: number) => ls.deleteFromList(id)}
-          updateItem={(id: number, newItem: IListItem) =>
-            ls.updateItem(id, newItem)
-          }
+          updateItem={(id: number, newItem: IListItem) => ls.updateItem(id, newItem)}
         />
       );
     });
 
-    return <div className={"list"}>{listItems}</div>;
+    return (
+      <Card className={"list-container"} elevation={2}>
+        <div className={"list"}>{listItems}</div>
+      </Card>
+    );
   }
 }
