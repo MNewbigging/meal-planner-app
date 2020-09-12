@@ -10,6 +10,7 @@ import { Login } from "../login/Login";
 import { MealsPage } from "../meals/MealsPage";
 import { SettingsPage } from "../settings/SettingsPage";
 import { ApplicationNavbar } from "./ApplicationNavbar";
+import { PlannerPage } from "../planner/PlannerPage";
 
 interface ApplicationProps {
   appState: AppState;
@@ -45,6 +46,8 @@ export class ApplicationBody extends React.Component<ApplicationProps> {
       case App.MEALS:
         toRender.push(<MealsPage key={"meals-page"} mealPageState={appState.mealState} />);
         break;
+      case App.PLANNER:
+        toRender.push(<PlannerPage key={"planner-page"} />);
       case App.LIST:
         toRender.push(<ListPage key={"list-page"} listState={appState.listState} />);
         break;

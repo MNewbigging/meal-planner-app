@@ -10,6 +10,7 @@ export enum App {
   LOGIN,
   HOME,
   MEALS,
+  PLANNER,
   LIST,
   SETTINGS,
 }
