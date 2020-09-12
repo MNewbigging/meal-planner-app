@@ -40,7 +40,16 @@
 
     &:hover {
       color: #c3dac3;
-      //background-color:#a3b3a2;
+    }
+
+    &.active {
+      border: none;
+      color: #466365;
+      background-color: #c3dac3;
+
+      .navbar-link-icon {
+      color: #466365;
+      }
     }
 
     .navbar-link-icon {
