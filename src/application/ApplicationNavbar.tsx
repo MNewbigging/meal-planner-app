@@ -30,7 +30,7 @@ export class ApplicationNavbar extends React.Component<NavbarProps> {
         />
         <Button
           className={"navbar-link"}
-          text={"meals"}
+          text={"recipes"}
           onClick={() => this.props.toPage(App.MEALS)}
           minimal={true}
           icon={
@@ -41,12 +41,18 @@ export class ApplicationNavbar extends React.Component<NavbarProps> {
         />
         <Button
           className={"navbar-link"}
-          text={"PLANNER"}
+          text={"meal planner"}
           onClick={() => this.props.toPage(App.PLANNER)}
+          minimal={true}
+          icon={
+            <Icon 
+              icon={"calendar"}
+              className={"navbar-link-icon"}
+          />}
         />
         <Button
           className={"navbar-link"}
-          text={"LIST"}
+          text={"shopping list"}
           onClick={() => this.props.toPage(App.LIST)}
           minimal={true}
           icon={
