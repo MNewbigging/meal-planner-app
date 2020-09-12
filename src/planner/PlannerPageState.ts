@@ -1,10 +1,12 @@
 import { observable } from "mobx";
 
+import { IMeal } from "../state/MealState";
 import { randomId } from "../util/RandomId";
 
 export interface IPlannerDay {
   id: string;
   date: string;
+  breakfast?: IMeal;
 }
 
 export class PlannerPageState {
@@ -12,7 +14,6 @@ export class PlannerPageState {
   public plannerDayCount: number = 7;
   @observable public plannerDays: IPlannerDay[] = [];
   private readonly days: string[] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  private readonly dateSuffix: string[] = ["st", "nd", "rd", "th"];
 
   constructor() {
     this.setupPlannerDays();
@@ -34,8 +35,6 @@ export class PlannerPageState {
       // Increment date
       rollDate.setDate(rollDate.getDate() + 1);
     }
-
-    console.log("pd: ", this.plannerDays);
   }
 
   private makeDate(dayNum: number, dateNum: number): string {

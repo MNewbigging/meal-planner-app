@@ -1,13 +1,13 @@
 import { action, observable } from "mobx";
 
-import { ITag } from "../state/TagState";
 import { IMeal } from "../state/MealState";
+import { ITag } from "../state/TagState";
 
 export class TagMultiSelectState {
   public meal: IMeal;
-  public allOptions: ITag[];
   @observable public remainingOptions: ITag[];
   @observable public selectedOptions: ITag[] = [];
+  private allOptions: ITag[];
 
   constructor(options: ITag[], meal: IMeal) {
     this.allOptions = options;

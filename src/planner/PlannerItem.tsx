@@ -10,8 +10,8 @@ export class PlannerItem extends React.Component<IPlannerDay> {
   public render() {
     return (
       <Card className={"day-item"}>
-        <h3>{this.props.date}</h3>
-        <div>Meals for the day...</div>
+        <div className={"day-item-date"}>{this.props.date}</div>
+        <div className={"day-item-breakfast"}>Breakfast</div>
       </Card>
     );
   }
