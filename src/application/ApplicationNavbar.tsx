@@ -41,7 +41,12 @@ export class ApplicationNavbar extends React.Component<NavbarProps> {
         />
         <Button
           className={"navbar-link"}
-          text={"list"}
+          text={"PLANNER"}
+          onClick={() => this.props.toPage(App.PLANNER)}
+        />
+        <Button
+          className={"navbar-link"}
+          text={"LIST"}
           onClick={() => this.props.toPage(App.LIST)}
           minimal={true}
           icon={
