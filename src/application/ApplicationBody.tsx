@@ -36,7 +36,7 @@ export class ApplicationBody extends React.Component<ApplicationProps> {
     toRender.push(<Alerter key={"alerter"} />);
 
     // Add the app navbar to render array
-    toRender.push(<ApplicationNavbar key={"navbar"} toPage={appState.toPage} />);
+    toRender.push(<ApplicationNavbar key={"navbar"} app={app} toPage={appState.toPage} />);
 
     // Then add whatever page necessary based on app state
     switch (appState.app) {
