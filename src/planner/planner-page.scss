@@ -1,15 +1,21 @@
 .planner-controls {
   width: 80%;
   margin: 0 auto;
-  //margin-top: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 80px;
 }
 
 .days-container {
-  width: 90%;
+  width: 95%;
+  height: 75%;
   margin: 0 auto;
-  //margin-top: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  flex-direction: row;
+  overflow-y: auto;
+
+  .days-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+  }
 }

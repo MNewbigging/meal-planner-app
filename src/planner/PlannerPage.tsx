@@ -34,6 +34,10 @@ export class PlannerPage extends React.Component<PlannerProps> {
       days.push(<PlannerItem key={"pd-" + pd.id} id={pd.id} date={pd.date} />);
     });
 
-    return <div className={"days-container"}>{days}</div>;
+    return (
+      <Card className={"days-container"} elevation={2}>
+        <div className={"days-list"}>{days}</div>
+      </Card>
+    );
   }
 }

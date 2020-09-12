@@ -9,7 +9,7 @@ export interface IPlannerDay {
 
 export class PlannerPageState {
   public today: Date = new Date();
-  public plannerDayCount: number = 7;
+  public plannerDayCount: number = 17;
   @observable public plannerDays: IPlannerDay[] = [];
   private readonly days: string[] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   private readonly dateSuffix: string[] = ["st", "nd", "rd", "th"];

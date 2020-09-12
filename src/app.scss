@@ -5,4 +5,5 @@
 
 .page-container {
   height: calc(100% - 80px); // - value is navbar height
+  overflow: hidden;
 }
