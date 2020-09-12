@@ -4,6 +4,7 @@ import { ListState } from "./list/ListState";
 import { LoginState } from "./login/LoginState";
 import { MealPageState } from "./meals/MealPageState";
 import { SettingsState } from "./settings/SettingsState";
+import { PlannerPageState } from "./planner/PlannerPageState";
 
 // This allows app to control which top-level component is shown
 export enum App {
@@ -24,13 +25,15 @@ export class AppState {
   public listState: ListState;
   public mealState: MealPageState;
   public settingsState: SettingsState;
+  public plannerState: PlannerPageState;
 
   constructor() {
-    this.app = App.HOME;
+    this.app = App.PLANNER;
     this.loginState = new LoginState();
     this.listState = new ListState();
     this.mealState = new MealPageState();
     this.settingsState = new SettingsState();
+    this.plannerState = new PlannerPageState();
   }
 
   @action

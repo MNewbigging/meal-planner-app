@@ -47,7 +47,7 @@ export class ApplicationBody extends React.Component<ApplicationProps> {
         toRender.push(<MealsPage key={"meals-page"} mealPageState={appState.mealState} />);
         break;
       case App.PLANNER:
-        toRender.push(<PlannerPage key={"planner-page"} />);
+        toRender.push(<PlannerPage key={"planner-page"} plannerState={appState.plannerState} />);
         break;
       case App.LIST:
         toRender.push(<ListPage key={"list-page"} listState={appState.listState} />);

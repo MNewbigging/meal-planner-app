@@ -21,6 +21,7 @@
       flex-wrap: wrap;
       justify-content: space-between;
 
+      // Should probably move this to meal-item.scss
       @media screen and (max-width: 600px) {
         .meal-item {
           flex: 0 0 99%;

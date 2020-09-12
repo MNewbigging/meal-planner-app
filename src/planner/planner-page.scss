@@ -1,0 +1,15 @@
+.planner-controls {
+  width: 80%;
+  margin: 0 auto;
+  //margin-top: 20px;
+}
+
+.days-container {
+  width: 90%;
+  margin: 0 auto;
+  //margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: row;
+}
