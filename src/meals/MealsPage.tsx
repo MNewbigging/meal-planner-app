@@ -98,6 +98,10 @@ export class MealsPage extends React.Component<MealsPageProps> {
       );
     });
 
-    return <div className={"meals-list-container"}>{meals}</div>;
+    return (
+      <Card className={"meals-list-container"} elevation={2}>
+        <div className={"meals-list"}>{meals}</div>
+      </Card>
+    );
   }
 }

@@ -3,6 +3,7 @@
 
   // Left-hand pane
   .meals-pane {
+    height: 100%;
     .meals-control-container {
       width: 80%;
       margin: 0 auto;
@@ -14,12 +15,17 @@
     }
 
     .meals-list-container {
-      width: 90%;
+      width: 95%;
+      height: 75%;
       margin: 0 auto;
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      margin-top: 20px;
+      overflow-y: auto;
+
+      .meals-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
 
       // Should probably move this to meal-item.scss
       @media screen and (max-width: 600px) {
