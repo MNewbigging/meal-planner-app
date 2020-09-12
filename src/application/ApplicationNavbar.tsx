@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button } from "@blueprintjs/core";
+import { Button, Icon } from "@blueprintjs/core";
 
 import { App } from "../AppState";
 
@@ -19,23 +19,47 @@ export class ApplicationNavbar extends React.Component<NavbarProps> {
         </div>
         <Button
           className={"navbar-link"}
-          text={"HOME"}
+          text={"home"}
           onClick={() => this.props.toPage(App.HOME)}
+          minimal={true}
+          icon={
+            <Icon 
+              icon={"home"}
+              className={"navbar-link-icon"}
+          />}
         />
         <Button
           className={"navbar-link"}
-          text={"MEALS"}
+          text={"meals"}
           onClick={() => this.props.toPage(App.MEALS)}
+          minimal={true}
+          icon={
+            <Icon 
+              icon={"book"}
+              className={"navbar-link-icon"}
+          />}
         />
         <Button
           className={"navbar-link"}
-          text={"LIST"}
+          text={"list"}
           onClick={() => this.props.toPage(App.LIST)}
+          minimal={true}
+          icon={
+            <Icon 
+              icon={"properties"}
+              className={"navbar-link-icon"}
+          />}
         />
         <Button
           className={"navbar-link"}
-          text={"SETTINGS"}
+          text={"settings"}
           onClick={() => this.props.toPage(App.SETTINGS)}
+          minimal={true}
+          icon={
+            <Icon 
+              icon={"cog"}
+              className={"navbar-link-icon"}
+          />}
         />
       </div>
     );
