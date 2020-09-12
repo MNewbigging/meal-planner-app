@@ -6,7 +6,7 @@ import { Button, Icon, InputGroup, Popover, Tag } from "@blueprintjs/core";
 
 import { CirclePicker, ColorResult } from "react-color";
 
-import { AlertProps, alertState } from "../../state/AlertState";
+import { alertState } from "../../state/AlertState";
 import { mealState } from "../../state/MealState";
 import { ITag } from "../../state/TagState";
 import { tagState } from "../../state/TagState";
