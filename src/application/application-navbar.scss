@@ -7,21 +7,24 @@
   flex-direction: row;
 
   .navbar-logo {
-    //background-image: url("../../assets/logoEmpty.jpg");
     background-color: #466365;
-    width: 100px;
+    width: 80px;
+    height: 80px;
+    img {
+      width: 80px;
+      height: 80px;
+    }
   }
 
   .navbar-link {
     margin: auto auto;
-    font-family: 'Sen', sans-serif;
+    font-family: "Sen", sans-serif;
     color: #c3dac3;
 
     &:hover {
       color: #c3dac3;
       //background-color:#a3b3a2;
     }
-
 
     .navbar-link-icon {
       color: #c3dac3;
