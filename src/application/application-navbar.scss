@@ -10,9 +10,26 @@
     background-color: #466365;
     width: 80px;
     height: 80px;
+    
     img {
       width: 80px;
       height: 80px;
+    }
+
+    #logo-text-meal {
+      position: absolute;
+      left: 25px;
+      top: 22px;
+      font-family: "Sen", sans-serif;
+      color: #c3dac3;
+    }
+
+    #logo-text-planner {
+      position: absolute;
+      left: 15px;
+      top: 40px;
+      font-family: "Sen", sans-serif;
+      color: #c3dac3;
     }
   }
 

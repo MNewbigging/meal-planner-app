@@ -16,6 +16,8 @@ export class ApplicationNavbar extends React.Component<NavbarProps> {
       <div className={"navbar-container"}>
         <div key={"logo"} className={"navbar-logo"}>
           <img src={"../../assets/logoEmpty.jpg"} />
+          <span id={"logo-text-meal"}>meal</span>
+          <span id={"logo-text-planner"}>planner</span>
         </div>
         <Button
           className={"navbar-link"}
