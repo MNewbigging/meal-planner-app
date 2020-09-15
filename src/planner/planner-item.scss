@@ -2,4 +2,39 @@
   flex: 0 0 49%;
   margin-bottom: 2%;
   padding: 6px;
+  display: flex;
+  flex-direction: column;
+
+  .day-item-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex: 1 0 20%;
+
+    &.title {
+      justify-content: space-between;
+      font-weight: bold;
+      font-size: 18px;
+
+      .title-text {
+        margin: 5px;
+      }
+    }
+
+    button {
+      margin: 0;
+    }
+
+    .day-item-label {
+      width: 25%;
+      margin: auto 0;
+    }
+
+    .day-item-meal {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      width: 50%;
+    }
+  }
 }
