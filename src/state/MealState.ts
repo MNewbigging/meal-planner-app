@@ -1,4 +1,5 @@
 import { action, observable } from "mobx";
+import { ITag } from "./TagState";
 
 export interface IMeal {
   id: number;
@@ -9,7 +10,35 @@ export interface IMeal {
 }
 
 class MealState {
+  private carbonara =
+    '{ "id": 0, "title": "carbonara", "method": "do this", "servings": 2, "tags": [] }';
+
+  private bananaBread =
+    '{ "id": 1, "title": "banana bread", "method": "make bred", "servings": 6, "tags": [] }';
+
+  private chilliWraps =
+    '{ "id": 2, "title": "chilli wraps", "method": "make chilli", "servings": 4, "tags": [] }';
+
+  private salad =
+    '{ "id": 3, "title": "salad", "method": "make salad", "servings": 2, "tags": [] }';
+
+  private fryUp =
+    '{ "id": 4, "title": "fry up", "method": "brekky fry up nom", "servings": 2, "tags": [] }';
+
   @observable private meals: IMeal[] = [];
+
+  constructor() {
+    const carbMeal: IMeal = JSON.parse(this.carbonara) as IMeal;
+    const bbMeal: IMeal = JSON.parse(this.bananaBread) as IMeal;
+    const chilliMeal: IMeal = JSON.parse(this.chilliWraps) as IMeal;
+    const saladMeal: IMeal = JSON.parse(this.salad) as IMeal;
+    const fryMeal: IMeal = JSON.parse(this.fryUp) as IMeal;
+    this.addMeal(carbMeal);
+    this.addMeal(bbMeal);
+    this.addMeal(chilliMeal);
+    this.addMeal(saladMeal);
+    this.addMeal(fryMeal);
+  }
 
   public getMeals(): IMeal[] {
     return this.meals;
