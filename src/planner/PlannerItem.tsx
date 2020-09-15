@@ -13,34 +13,34 @@ export class PlannerItem extends React.Component<IPlannerDay> {
         <div className={"day-item-row title"}>
           <div className={"title-text"}>{this.props.date}</div>
           <div>
-            <Button icon={"plus"} />
+            <Button icon={"plus"} text={"Add to list"} />
           </div>
         </div>
         <div className={"day-item-row"}>
           <div className={"day-item-label"}>Breakfast</div>
           <div className={"day-item-meal"}>
-            <Button icon={"plus"} text={"Add meal"} />
+            <Button icon={"plus"} text={"Quick add"} />
             <Button icon={"eye-open"} text={"Browse meals"} />
           </div>
         </div>
         <div className={"day-item-row"}>
           <div className={"day-item-label"}>Lunch</div>
           <div className={"day-item-meal"}>
-            <Button icon={"plus"} text={"Add meal"} />
+            <Button icon={"plus"} text={"Quick add"} />
             <Button icon={"eye-open"} text={"Browse meals"} />
           </div>
         </div>
         <div className={"day-item-row"}>
           <div className={"day-item-label"}>Dinner</div>
           <div className={"day-item-meal"}>
-            <Button icon={"plus"} text={"Add meal"} />
+            <Button icon={"plus"} text={"Quick add"} />
             <Button icon={"eye-open"} text={"Browse meals"} />
           </div>
         </div>
         <div className={"day-item-row"}>
           <div className={"day-item-label"}>Snacks</div>
           <div className={"day-item-meal"}>
-            <Button icon={"plus"} text={"Add meal"} />
+            <Button icon={"plus"} text={"Quick add"} />
             <Button icon={"eye-open"} text={"Browse meals"} />
           </div>
         </div>

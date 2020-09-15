@@ -1,5 +1,4 @@
 import { action, observable } from "mobx";
-import { ITag } from "./TagState";
 
 export interface IMeal {
   id: number;
@@ -11,19 +10,19 @@ export interface IMeal {
 
 class MealState {
   private carbonara =
-    '{ "id": 0, "title": "carbonara", "method": "do this", "servings": 2, "tags": [] }';
+    '{ "id": 0, "title": "carbonara", "method": "do this", "servings": 2, "tags": ["dinner"] }';
 
   private bananaBread =
-    '{ "id": 1, "title": "banana bread", "method": "make bred", "servings": 6, "tags": [] }';
+    '{ "id": 1, "title": "banana bread", "method": "make bred", "servings": 6, "tags": ["snack"] }';
 
   private chilliWraps =
-    '{ "id": 2, "title": "chilli wraps", "method": "make chilli", "servings": 4, "tags": [] }';
+    '{ "id": 2, "title": "chilli wraps", "method": "make chilli", "servings": 4, "tags": ["dinner"] }';
 
   private salad =
-    '{ "id": 3, "title": "salad", "method": "make salad", "servings": 2, "tags": [] }';
+    '{ "id": 3, "title": "salad", "method": "make salad", "servings": 2, "tags": ["lunch"] }';
 
   private fryUp =
-    '{ "id": 4, "title": "fry up", "method": "brekky fry up nom", "servings": 2, "tags": [] }';
+    '{ "id": 4, "title": "fry up", "method": "brekky fry up nom", "servings": 2, "tags": ["breakfast"] }';
 
   @observable private meals: IMeal[] = [];
 
