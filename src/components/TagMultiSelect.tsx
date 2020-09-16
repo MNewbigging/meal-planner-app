@@ -41,13 +41,12 @@ export class TagMultiSelect extends React.Component<TMSProps> {
         onItemSelect={tss.selectTag}
         selectedItems={tss.selectedOptions}
         itemListPredicate={this.filterOptionsOnQuery}
-        // itemPredicate={this.filterOnQuery}
         noResults={<MenuItem disabled={true} text={"No results!"} />}
       />
     );
   }
 
-  private itemRenderer(tag: ITag, props: IItemRendererProps) {
+  private itemRenderer(tag: ITag, props: IItemRendererProps): JSX.Element {
     return (
       <Tag
         className={"tag-option"}
@@ -63,7 +62,7 @@ export class TagMultiSelect extends React.Component<TMSProps> {
     );
   }
 
-  private tagRenderer(tag: ITag) {
+  private tagRenderer(tag: ITag): JSX.Element {
     return (
       <Tag key={tag.id + "-selected"} style={{ backgroundColor: tag.color }}>
         {tag.label}
@@ -71,7 +70,7 @@ export class TagMultiSelect extends React.Component<TMSProps> {
     );
   }
 
-  public filterOptionsOnQuery = (query: string, items: ITag[]) => {
+  public filterOptionsOnQuery = (query: string, items: ITag[]): ITag[] => {
     let results: ITag[] = [];
     // Check for an empty query first
     if (query === "") {

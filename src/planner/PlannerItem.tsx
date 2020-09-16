@@ -2,6 +2,7 @@ import React from "react";
 
 import { Button, Card } from "@blueprintjs/core";
 
+import { PlannerItemMealRow } from "./PlannerItemMealRow";
 import { IPlannerDay } from "./PlannerPageState";
 
 import "./planner-item.scss";
@@ -16,34 +17,10 @@ export class PlannerItem extends React.Component<IPlannerDay> {
             <Button icon={"plus"} text={"Add to list"} />
           </div>
         </div>
-        <div className={"day-item-row"}>
-          <div className={"day-item-label"}>Breakfast</div>
-          <div className={"day-item-meal"}>
-            <Button icon={"plus"} text={"Quick add"} />
-            <Button icon={"eye-open"} text={"Browse meals"} />
-          </div>
-        </div>
-        <div className={"day-item-row"}>
-          <div className={"day-item-label"}>Lunch</div>
-          <div className={"day-item-meal"}>
-            <Button icon={"plus"} text={"Quick add"} />
-            <Button icon={"eye-open"} text={"Browse meals"} />
-          </div>
-        </div>
-        <div className={"day-item-row"}>
-          <div className={"day-item-label"}>Dinner</div>
-          <div className={"day-item-meal"}>
-            <Button icon={"plus"} text={"Quick add"} />
-            <Button icon={"eye-open"} text={"Browse meals"} />
-          </div>
-        </div>
-        <div className={"day-item-row"}>
-          <div className={"day-item-label"}>Snacks</div>
-          <div className={"day-item-meal"}>
-            <Button icon={"plus"} text={"Quick add"} />
-            <Button icon={"eye-open"} text={"Browse meals"} />
-          </div>
-        </div>
+        <PlannerItemMealRow label={"Breakfast"} filterTagId={"breakfast"} />
+        <PlannerItemMealRow label={"Lunch"} filterTagId={"lunch"} />
+        <PlannerItemMealRow label={"Dinner"} filterTagId={"dinner"} />
+        <PlannerItemMealRow label={"Snacks"} filterTagId={"snack"} />
       </Card>
     );
   }
