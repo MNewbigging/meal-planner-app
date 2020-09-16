@@ -11,11 +11,12 @@ import { IMeal, mealState } from "../state/MealState";
  */
 
 interface MealRowProps {
+  meals: IMeal[]; // the meals chosen for this meal row
   label: string; // name of the meal for this meal row
   filterTagId: string; // id of tag to filter options by
 }
 
-export class PlannerItemMealRow extends React.Component<MealRowProps> {
+export class PlannerDayMealRow extends React.Component<MealRowProps> {
   private mealSelectItmes: IMeal[] = [];
   constructor(props: MealRowProps) {
     super(props);
@@ -29,7 +30,8 @@ export class PlannerItemMealRow extends React.Component<MealRowProps> {
     return (
       <div className={"day-item-row"}>
         <div className={"day-item-label"}>{this.props.label}</div>
-        <div className={"day-item-meal"}>
+        {this.renderMeals()}
+        <div className={"day-item-actions"}>
           <MealSelect
             items={this.mealSelectItmes}
             onItemSelect={(meal) => this.onMealSelect(meal)}
@@ -41,7 +43,19 @@ export class PlannerItemMealRow extends React.Component<MealRowProps> {
     );
   }
 
+  private renderMeals(): JSX.Element {
+    const toRender: JSX.Element[] = [];
+    this.props.meals.forEach((meal) => {
+      toRender.push(<div>{meal.title}</div>);
+    });
+
+    return <div className={"day-item-meals"}>{toRender}</div>;
+  }
+
+  // This doesn't update IPlannerDay, because a new array is returned from the map
+  // Need to make an update meals funtion in PlannerPageState for this
   private onMealSelect(meal: IMeal): void {
     console.log("picked a meal: ", meal.title);
+    this.props.meals.push(meal);
   }
 }

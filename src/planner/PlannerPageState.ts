@@ -6,7 +6,7 @@ import { randomId } from "../util/RandomId";
 export interface IPlannerDay {
   id: string;
   date: string;
-  breakfast?: IMeal;
+  meals: Map<string, IMeal[]>; // breakfast: meals, lunch: meals etc
 }
 
 export class PlannerPageState {
@@ -29,6 +29,7 @@ export class PlannerPageState {
       const day: IPlannerDay = {
         id: randomId.createId(5),
         date: this.makeDate(dayNum, dateNum),
+        meals: this.makeMealMap(),
       };
       this.plannerDays.push(day);
 
@@ -60,5 +61,14 @@ export class PlannerPageState {
         break;
     }
     return `${dayString} ${dateString}${dateSuffix}`;
+  }
+
+  private makeMealMap(): Map<string, IMeal[]> {
+    const mealMap = new Map<string, IMeal[]>();
+    mealMap.set("breakfast", []);
+    mealMap.set("lunch", []);
+    mealMap.set("dinner", []);
+    mealMap.set("snack", []);
+    return mealMap;
   }
 }

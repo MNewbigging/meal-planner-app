@@ -4,7 +4,7 @@ import { observer } from "mobx-react";
 
 import { Card } from "@blueprintjs/core";
 
-import { PlannerItem } from "./PlannerItem";
+import { PlannerDay } from "./PlannerDay";
 import { PlannerPageState } from "./PlannerPageState";
 
 import "./planner-page.scss";
@@ -31,7 +31,7 @@ export class PlannerPage extends React.Component<PlannerProps> {
   private renderPlannerDays(): JSX.Element {
     const days: JSX.Element[] = [];
     this.props.plannerState.plannerDays.forEach((pd) => {
-      days.push(<PlannerItem key={"pd-" + pd.id} id={pd.id} date={pd.date} />);
+      days.push(<PlannerDay key={"pd-" + pd.id} id={pd.id} date={pd.date} meals={pd.meals} />);
     });
 
     return (
