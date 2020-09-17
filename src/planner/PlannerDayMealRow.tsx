@@ -2,7 +2,7 @@ import React from "react";
 
 import { observer } from "mobx-react";
 
-import { Button } from "@blueprintjs/core";
+import { Button, Tag } from "@blueprintjs/core";
 
 import { MealSelect } from "../components/MealSelect";
 import { IMeal, mealState } from "../state/MealState";
@@ -20,13 +20,13 @@ interface MealRowProps {
 
 @observer
 export class PlannerDayMealRow extends React.Component<MealRowProps> {
-  private mealSelectItmes: IMeal[] = [];
+  private mealSelectItems: IMeal[] = [];
   constructor(props: MealRowProps) {
     super(props);
 
     const allMeals: IMeal[] = mealState.getMeals();
     const filteredMeals = allMeals.filter((meal) => meal.tags.includes(this.props.filterTagId));
-    this.mealSelectItmes = filteredMeals;
+    this.mealSelectItems = filteredMeals;
   }
 
   public render() {
@@ -36,7 +36,7 @@ export class PlannerDayMealRow extends React.Component<MealRowProps> {
         {this.renderMeals()}
         <div className={"day-item-actions"}>
           <MealSelect
-            items={this.mealSelectItmes}
+            items={this.mealSelectItems}
             onItemSelect={(meal) => this.onMealSelect(meal)}
             buttonText={"Add"}
           />
@@ -48,11 +48,19 @@ export class PlannerDayMealRow extends React.Component<MealRowProps> {
 
   private renderMeals(): JSX.Element {
     const toRender: JSX.Element[] = [];
-    this.props.meals.forEach((meal) => {
-      toRender.push(<div className={"di-meal-item"}>{meal.title}</div>);
+    this.props.meals.forEach((meal, index) => {
+      toRender.push(
+        <Tag className={"di-meal-item"} onRemove={() => this.removeMeal(index)}>
+          {meal.title}
+        </Tag>
+      );
     });
 
     return <div className={"day-item-meals"}>{toRender}</div>;
+  }
+
+  private removeMeal(index: number): void {
+    this.props.meals.splice(index, 1);
   }
 
   private onMealSelect(meal: IMeal): void {
