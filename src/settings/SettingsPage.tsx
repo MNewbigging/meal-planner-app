@@ -2,6 +2,7 @@ import React from "react";
 
 import { observer } from "mobx-react";
 
+import { PlannerDetails } from "./planner/PlannerDetails";
 import { Settings, SettingsState } from "./SettingsState";
 import { TagDetails } from "./tags/TagDetails";
 
@@ -25,11 +26,25 @@ export class SettingsPage extends React.Component<SPProps> {
   }
 
   private renderSettingsMenu(): JSX.Element {
+    const ss = this.props.settingsState;
     return (
       <div className={"settings-menu"}>
         <h1>Settings</h1>
-        <div className={"setting-link"}>
-          <a href="#">Tags</a>
+        <div
+          className={ss.selectedSetting === Settings.TAGS ? "setting-link active" : "setting-link"}
+        >
+          <a href="#" onClick={() => ss.setSelectedSetting(Settings.TAGS)}>
+            Tags
+          </a>
+        </div>
+        <div
+          className={
+            ss.selectedSetting === Settings.PLANNER ? "setting-link active" : "setting-link"
+          }
+        >
+          <a href="#" onClick={() => ss.setSelectedSetting(Settings.PLANNER)}>
+            Planner
+          </a>
         </div>
       </div>
     );
@@ -40,6 +55,11 @@ export class SettingsPage extends React.Component<SPProps> {
     switch (this.props.settingsState.selectedSetting) {
       case Settings.TAGS:
         toRender.push(<TagDetails key={"tag-details"} settingsState={this.props.settingsState} />);
+        break;
+      case Settings.PLANNER:
+        toRender.push(
+          <PlannerDetails key={"planner-details"} settingsState={this.props.settingsState} />
+        );
         break;
     }
 

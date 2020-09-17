@@ -22,7 +22,7 @@ interface TagDetailsProps {
 export class TagDetails extends React.Component<TagDetailsProps> {
   public render() {
     return (
-      <div className={"tag-details-container"}>
+      <div className={"details-container"}>
         {this.renderDescription()}
         {this.renderTags()}
         {this.renderTagCreator()}

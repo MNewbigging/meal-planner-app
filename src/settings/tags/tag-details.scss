@@ -1,33 +1,24 @@
-.tag-details-container {
-  width: 100%;
-  height: 100%;
+.tags-description {
+  padding-bottom: 10px;
+}
 
-  .tags-description {
-    padding-top: 40px;
-    padding-left: 40px;
-    padding-bottom: 10px;
+.tags-box {
+  padding: 10px;
+  width: 60%;
+  box-sizing: border-box;
+  border: 1px solid grey;
+
+  .tag {
+    margin: 2px;
   }
+}
 
-  .tags-box {
-    margin-left: 40px;
-    padding: 10px;
-    width: 60%;
-    box-sizing: border-box;
-    border: 1px solid grey;
+.tag-creator {
+  margin-top: 40px;
+  width: 180px;
 
-    .tag {
-      margin: 2px;
-    }
-  }
-
-  .tag-creator {
-    margin-left: 40px;
-    margin-top: 40px;
-    width: 180px;
-
-    &-label {
-      margin-bottom: 10px;
-    }
+  &-label {
+    margin-bottom: 10px;
   }
 }
 
