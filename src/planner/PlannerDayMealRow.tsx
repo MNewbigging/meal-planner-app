@@ -1,5 +1,7 @@
 import React from "react";
 
+import { observer } from "mobx-react";
+
 import { Button } from "@blueprintjs/core";
 
 import { MealSelect } from "../components/MealSelect";
@@ -16,6 +18,7 @@ interface MealRowProps {
   filterTagId: string; // id of tag to filter options by
 }
 
+@observer
 export class PlannerDayMealRow extends React.Component<MealRowProps> {
   private mealSelectItmes: IMeal[] = [];
   constructor(props: MealRowProps) {
@@ -35,9 +38,9 @@ export class PlannerDayMealRow extends React.Component<MealRowProps> {
           <MealSelect
             items={this.mealSelectItmes}
             onItemSelect={(meal) => this.onMealSelect(meal)}
-            buttonText={"Quick add"}
+            buttonText={"Add"}
           />
-          <Button icon={"eye-open"} text={"Browse meals"} />
+          <Button icon={"eye-open"} text={"Browse"} />
         </div>
       </div>
     );
@@ -46,16 +49,13 @@ export class PlannerDayMealRow extends React.Component<MealRowProps> {
   private renderMeals(): JSX.Element {
     const toRender: JSX.Element[] = [];
     this.props.meals.forEach((meal) => {
-      toRender.push(<div>{meal.title}</div>);
+      toRender.push(<div className={"di-meal-item"}>{meal.title}</div>);
     });
 
     return <div className={"day-item-meals"}>{toRender}</div>;
   }
 
-  // This doesn't update IPlannerDay, because a new array is returned from the map
-  // Need to make an update meals funtion in PlannerPageState for this
   private onMealSelect(meal: IMeal): void {
-    console.log("picked a meal: ", meal.title);
     this.props.meals.push(meal);
   }
 }

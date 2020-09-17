@@ -4,12 +4,14 @@
   padding: 6px;
   display: flex;
   flex-direction: column;
+  min-width: 49%;
 
   .day-item-row {
     display: flex;
     flex-direction: row;
     width: 100%;
     flex: 1 0 20%;
+    justify-content: space-between;
 
     &.title {
       justify-content: space-between;
@@ -26,15 +28,29 @@
     }
 
     .day-item-label {
-      width: 25%;
+      width: 12%;
       margin: auto 0;
+    }
+
+    .day-item-meals {
+      width: 58%;
+      margin: auto 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      flex: 1 1 auto;
+
+      .di-meal-item {
+        margin-right: 3px;
+        &:last-of-type {
+          margin-right: 0px;
+        }
+      }
     }
 
     .day-item-actions {
       display: flex;
       flex-direction: row;
-      justify-content: space-evenly;
-      width: 50%;
     }
   }
 }
