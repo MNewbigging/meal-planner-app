@@ -1,18 +1,14 @@
+import React from "react";
 
-import * as React from "react";
-
-export interface IHelloProps
-{
-    test: string;
+export interface IHelloProps {
+    msg: string;
 }
 
-export class Hello extends React.Component<IHelloProps, {}>
-{
-    public render(): JSX.Element
-    {
-        return (
+export class Hello extends React.Component<IHelloProps> {
+    public render(): JSX.Element {
+        return  (
             <>
-                {this.props.test}
+                {this.props.msg}
             </>
         );
     }
